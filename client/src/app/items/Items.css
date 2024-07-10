@@ -1,0 +1,76 @@
+.items-container {
+    background-color: white;
+}
+
+.book-item {
+    margin: 100px 200px;
+}
+
+
+
+.items-header {
+    height: 200px;
+    background-color: #ECE7FB;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+    flex-direction: row;
+
+}
+
+.search-container input {
+    width: 60%;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    margin-right: 10px;
+    
+}
+
+.search-container button {
+    padding: 5px 20px;
+    font-size: 18px;
+    font-family: Poppins;
+    border: none;
+    background-color: #3366FF;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+}
+
+.search-container button:hover {
+    background-color: #3366BF;
+}
+
+.items-header h2 {
+    font-size: 24px;
+    font-family: Poppins;
+    font-weight: bold;
+    padding-left: 100px;
+}
+
+.items-header button {
+    background-color: #3366FF;
+    width: 100px; 
+    height: 50px;
+    border-radius: 10px;
+    font-family: Poppins;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    margin-right: 100px;
+}
+
+.items-header button:hover {
+    background-color: #3366BF;
+}
