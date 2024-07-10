@@ -1,11 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export const POST = async (request: NextRequest) => {
-    const body = await request.json();
-    console.log({ body });
+interface SignupRequest {
+    username: string;
+    telegram: string;
+    city: string;
+    password: string;
+}
 
-    return NextResponse.json(
-        { message: "Successfully Registered!" },
-        { status: 200 },
-    );
+export const POST = async (request: NextRequest) => {
+    const data: SignupRequest = await request.json();
+
+    if (data.username.includes("bad")) {
+        return NextResponse.json({ message: "bad username" }, { status: 422 });
+    }
+
+    console.log({ data });
+
+    return NextResponse.redirect(new URL("/", request.url));
 };
