@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Contact.module.scss';
+import Image from 'next/image';
 
 const Contact: React.FC = () => {
   return (
@@ -10,7 +11,7 @@ const Contact: React.FC = () => {
         <button>Contact us</button>
       </div>
       <div className={styles.icon}>
-        <img src="/lightbulb.png" alt="Contact" />
+        <Image src="/lightbulb.png" alt="Contact" width={500} height={500} />
       </div>
     </section>
   );

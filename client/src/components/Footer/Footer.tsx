@@ -9,22 +9,33 @@ const Footer: React.FC = () => {
           <h3>BEAR SCRIBES</h3>
           <form>
             <label htmlFor="email">Updates right to your inbox</label>
-            <input type="email" id="email" name="email" placeholder="Email Address" />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email Address"
+            />
             <button type="submit">Send</button>
           </form>
         </div>
         <div>
-          <h3>Our story</h3>
+          <h3>Our Story</h3>
           <ul>
+            <li>
+              <a href="mailto:a.mukhutdinov@innopolis.university">Contact</a>
+            </li>
             <li>FAQ</li>
-            <li>Contact</li>
           </ul>
         </div>
         <div>
           <h3>SharePoint</h3>
           <ul>
-            <li>Books</li>
-            <li>My Library</li>
+            <li>
+              <a href="/books">Books</a>
+            </li>
+            <li>
+              <a href="/my-library">My Library</a>
+            </li>
           </ul>
         </div>
       </div>

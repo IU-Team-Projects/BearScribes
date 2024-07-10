@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Hero.module.scss';
+import Image from 'next/image';
 
 const Hero: React.FC = () => {
   return (
@@ -10,7 +11,7 @@ const Hero: React.FC = () => {
         <button>Get Started</button>
       </div>
       <div className={styles.image}>
-        <img src="/books.png" alt="Books" />
+        <Image src="/books.png" alt="Books" width={500} height={500} />
       </div>
     </section>
   );
