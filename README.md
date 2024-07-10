@@ -1,24 +1,30 @@
-# BearScribes
-Repository for the project of the course Frontend Web Development (IU 2024)
-
-## How to Build and Run Locally
-
-### Specify your database variables in .env file.
-
-```env
-DB_HOST=your_database_host
-DB_USER=your_database_user
-DB_PASS=your_database_password
-DB_NAME=your_database_name
+### Установка зависимостей
+Убедитесь, что у вас установлен Poetry. Если нет, установите его с помощью следующей команды:
+```
+pip install poetry
+```
+Либо посмотри инструкцию в интернете.
+Затем установи зависимости проекта:
+```
+poetry install
 ```
 
-### Build the Client:
-```sh
-npm run build --prefix client
+### Настройка окружения 
+1. Создайте файл .env в корне проекта на основе .env.example.
+2. Заполните .env данными для подключения к вашей PostgreSQL базе данных и сгенерируйте SECRET_KEY с помощью скрипта get.py.
+
+### Генерация SECRET_KEY
+Используйте скрипт get.py, чтобы сгенерировать SECRET_KEY. Полученный результат так же вставь в .env
+
+### Запуск приложения
+Перейдите в директорию /app и запустите приложение с помощью uvicorn:
+```
+cd app
+uvicorn main:app
 ```
 
-### Run the Server:
-```sh
-pip install -r server/requirements.txt
-python server/app.py
+### Работа с API 
+Откройте браузер и перейдите по адресу, выводимому в терминале после запуска uvicorn, добавив /docs для работы с API:
+```
+http://localhost:8000/docs
 ```
