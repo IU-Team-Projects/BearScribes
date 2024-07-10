@@ -15,8 +15,11 @@ import {
   validateCity,
   validatePassword,
 } from "./model/validators";
+import { useRouter } from "next/navigation";
 
 export default function SignUpPage() {
+  const router = useRouter();
+
   const [username, setUsername] = useState("");
   const [telegram, setTelegram] = useState("");
   const [city, setCity] = useState("");
@@ -48,9 +51,12 @@ export default function SignUpPage() {
         password: password,
       })
       .then((res) => {
-        console.log(res);
+        if (res.status == 200) {
+          router.push("/");
+        }
       })
       .catch((err) => {
+        alert("Erorr: " + err.response?.data?.message);
         console.log(err);
       });
   };
