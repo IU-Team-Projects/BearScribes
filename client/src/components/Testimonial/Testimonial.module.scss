@@ -1,0 +1,27 @@
+.testimonial {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  background-color: #f5f5ff;
+
+  .profile {
+    text-align: center;
+
+    img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    span {
+      display: block;
+      margin-top: 10px;
+      font-size: 16px;
+      color: #666;
+    }
+  }
+}
