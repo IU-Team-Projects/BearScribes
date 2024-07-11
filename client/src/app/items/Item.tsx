@@ -3,7 +3,13 @@ import "./Item.css"
 import UserBook  from "../../models/userBook"
 import Image from "next/image"
 
+
 const Item = ({ book }: { book: UserBook }) => {
+
+    const contactUser = () => {
+        const telegramURL = `https://t.me/${book.telegram}`
+        window.open(telegramURL, '_blank');
+    }
     return( 
         <div className="item-container">
             <div className="item-text-fields">
@@ -13,7 +19,7 @@ const Item = ({ book }: { book: UserBook }) => {
                     <p>Description: {book.description}</p>
                     <p>Telegram: {book.telegram}</p>
                 </div>
-                <button>Contact User</button>
+                <button onClick={contactUser}>Contact User</button>
             </div>
 
             <img src={book.cover} alt="book-cover" className="book-cover" />

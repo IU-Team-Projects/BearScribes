@@ -1,34 +1,20 @@
-interface Response {
-    kind: string,
-    id: string,
-    items: Book[]
-}
-
-interface Book {
+interface Book {    
     id: string, 
     selfLink: string,
-    volumeInfo: VolumeInfo
-    
-}
-
-interface ImageLinks {
-    smallThumbnail: string,
-    thumbnail: string
+    volumeInfo: VolumeInfo  
 }
 
 interface VolumeInfo {
     title: string,
     authors: string[]
     publisher: string, 
-    publishDate: Date,
+    publishedDate: string,
     description: string, 
     pageCount: number,
     categories: string[],
     averageRating: number,
-    ratingsCount: number,
-    imageLinks: ImageLinks,
+    coverId: string
 }
-
 
 
 export default Book
