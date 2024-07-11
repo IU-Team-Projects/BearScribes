@@ -3,9 +3,8 @@ from fastapi.responses import JSONResponse
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from passlib.context import CryptContext
 from jose import JWTError, jwt
-from datetime import datetime, timedelta
+from datetime import timedelta
 from schemas import UserCreate, User, Token
 from db import get_db
 from models import User as UserModel
@@ -99,3 +98,7 @@ async def get_current_user(request: Request, db: AsyncSession = Depends(get_db))
     if user is None:
         raise credentials_exception
     return user
+
+@router.get("/user_info", response_model=User)
+async def get_current_user_info(current_user: User = Depends(get_current_user)):
+    return current_user
