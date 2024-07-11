@@ -8,7 +8,7 @@ interface InputProps {
 	placeholder: string;
 	value: string;
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	validator: Validator;
+	validator?: Validator;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -21,7 +21,7 @@ const Input: React.FC<InputProps> = ({
 }) => {
 	const [isFocused, setIsFocused] = useState(true);
 
-	const errorMessage = !isFocused ? validator(value) : "";
+	const errorMessage = !isFocused && validator ? validator(value) : "";
 
 	return (
 		<div className="flex flex-col space-y-0">
