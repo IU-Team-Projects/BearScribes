@@ -44,7 +44,7 @@ export function SignUpPage() {
     if (!isFormValid) return;
 
     axios
-      .post("/api/signup", {
+      .post("/api/register", {
         username: username,
         telegram: telegram,
         city: city,

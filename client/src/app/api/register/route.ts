@@ -14,7 +14,5 @@ export const POST = async (request: NextRequest) => {
         return NextResponse.json({ message: "bad username" }, { status: 422 });
     }
 
-    console.log({ data });
-
     return NextResponse.redirect(new URL("/", request.url));
 };
