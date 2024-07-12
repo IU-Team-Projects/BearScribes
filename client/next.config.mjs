@@ -13,14 +13,6 @@ const nextConfig = {
     ],
   },
   trailingSlash: true,
-  exportPathMap: async function(
-    defaultPathMap,
-    {},
-  ) {
-    return {
-      '/': { page: '/' },
-    };
-  },
 };
 
 export default nextConfig;
