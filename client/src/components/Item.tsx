@@ -1,7 +1,7 @@
 "use client"
-import "./Item.css"
-import UserBook  from "../../models/userBook"
-import Image from "next/image"
+import "../styles/Item.css"
+import UserBook  from "../models/userBook"
+
 
 
 const Item = ({ book }: { book: UserBook }) => {

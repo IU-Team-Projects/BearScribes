@@ -1,7 +1,10 @@
 "use client";
-import "./Items.css"
-import Item from "./Item"
+import "../../styles/Items.css"
+import Item from "../../components/Item"
 import UserBook from "@/models/userBook";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header"
+import SearchBar from "../../components/SearchBar"
 
 let books: UserBook[] = [
     {
@@ -32,42 +35,15 @@ let books: UserBook[] = [
 function Items() {
     return (
         <div className="items-container">
-            <header className="items-header">
-                <h2>Bear Scribes</h2>
-                <button> Library</button>
-            </header>
-
-            <div className="search-container">
-                <input type="text" placeholder="Search..." />
-                <button>Search</button>
-            </div>
-
-
+            <Header />
+            <SearchBar />
             <div className="book-item">
                 {books.map((book, index) => (
                     <Item key={index} book={book} />
                 ) )}
             </div>
 
-
-            <footer className="items-footer">
-                <div className="title-email-license">
-                    <h2>Bear Scribes</h2>
-                    <p>Updates right to your inbox</p>
-
-                    <input type="text" />
-                    <button> Send </button>
-                </div>
-
-                <div className="our-story">
-
-                </div>
-
-                <div className="share-point">
-
-                </div>
-
-            </footer>
+            <Footer />
         </div>
     )
 }
