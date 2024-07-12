@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Footer.module.scss';
+import { useRouter } from 'next/navigation';
+import Cookies from 'js-cookie';
 
 const Footer: React.FC = () => {
+  const [hasToken, setHasToken] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const token = Cookies.get('access_token');
+      setHasToken(!!token);
+    }
+  }, []);
+
+  const handleNavigation = (path: string) => {
+    if (typeof window !== 'undefined') {
+      router.push(path);
+    }
+  };
+
   return (
     <footer className={styles.footer}>
       <div className={styles.content}>
@@ -30,12 +48,26 @@ const Footer: React.FC = () => {
         <div>
           <h3>SharePoint</h3>
           <ul>
-            <li>
-              <a href="/books">Books</a>
-            </li>
-            <li>
-              <a href="/my-library">My Library</a>
-            </li>
+            {hasToken && (
+              <>
+                <li>
+                  <button
+                    className={styles.linkButton}
+                    onClick={() => handleNavigation('/books')}
+                  >
+                    Books
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className={styles.linkButton}
+                    onClick={() => handleNavigation('/library')}
+                  >
+                    My Library
+                  </button>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
