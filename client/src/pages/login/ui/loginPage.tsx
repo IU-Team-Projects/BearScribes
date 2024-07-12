@@ -54,9 +54,9 @@ export function LoginPage() {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <div className="p-6">
-        <button className="bg-[#F8D57E] rounded-lg w-64 h-10">Sign Up</button>
-      </div>
+			<div className="p-6">
+				<button className="bg-[#F8D57E] rounded-lg w-64 h-10">Sign In</button>
+			</div>
 
       <div className="text-xs p-4">
         <span className="text-gray-600">Don’t have an account? </span>
