@@ -17,11 +17,7 @@ const Hero: React.FC = () => {
 
   const handleGetStarted = () => {
     if (typeof window !== 'undefined') {
-      if (hasToken) {
-        router.push('/books');
-      } else {
-        router.push('/login');
-      }
+      router.push('/items');
     }
   };
 

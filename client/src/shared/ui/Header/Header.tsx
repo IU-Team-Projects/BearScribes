@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import styles from './Header.module.scss';
 
 const Header: React.FC = () => {
   const [hasToken, setHasToken] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
+  const isLibraryPage = pathname === '/library';
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -25,12 +27,29 @@ const Header: React.FC = () => {
       <div className={styles.logo}>BEAR SCRIBES</div>
       <div className={styles.actions}>
         {hasToken ? (
-          <button
-            className={styles.button}
-            onClick={() => handleNavigation('/library')}
-          >
-            My Library
-          </button>
+          isLibraryPage ? (
+            <>
+              <button
+                className={styles.button}
+                onClick={() => handleNavigation('/add')}
+              >
+                Add new book
+              </button>
+              <button
+                className={styles.button}
+                onClick={() => handleNavigation('/items')}
+              >
+                Books
+              </button>
+            </>
+          ) : (
+            <button
+              className={styles.button}
+              onClick={() => handleNavigation('/library')}
+            >
+              My Library
+            </button>
+          )
         ) : (
           <>
             <button

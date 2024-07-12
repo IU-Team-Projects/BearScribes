@@ -22,7 +22,7 @@ export function BookInfoPage({ book }: { book: Book }) {
     }
 
     fetchCover();
-  }, []);
+  }, [volumeInfo.coverId]);
 
   return (
     <div className="book-info-container">
