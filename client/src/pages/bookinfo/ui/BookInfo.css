@@ -88,12 +88,14 @@
 .book-info-categories p {
     gap: 10px;
 }
+
 .book-info-poster {
     height: 100%;
     border-radius: 10px;
     float: left;
     /* width: 250px; */
 }
+
 .book-info-authors-pages-categories {
     display: flex;
     flex-direction: column;

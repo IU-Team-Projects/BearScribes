@@ -1,9 +1,9 @@
-import Header from "@/shared/ui/header";
-import { Metadata } from "next";
+import Header from '@/shared/ui/header';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Sign Up",
-  description: "Bear Scribes Sign Up",
+  title: 'Sign Up',
+  description: 'Bear Scribes Sign Up',
 };
 
 export default function RootLayout({
