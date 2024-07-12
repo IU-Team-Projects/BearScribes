@@ -1,6 +1,7 @@
-import Items from "./items/page";
+'use client';
 
-export default function Home() {
-  return <Items />
-}
+import { HomePage } from '@/pages/home';
 
+const Page = () => <HomePage />;
+
+export default Page;
