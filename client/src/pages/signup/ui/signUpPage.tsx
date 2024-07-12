@@ -1,29 +1,29 @@
-"use client";
+'use client';
 
-import { FormEvent, useEffect, useState } from "react";
-import Link from "next/link";
-import axios from "axios";
+import { FormEvent, useEffect, useState } from 'react';
+import Link from 'next/link';
+import axios from 'axios';
 import {
-  validatePassword,
-  validateUsername,
-  validateTelegram,
-  validateCity,
   areAllValidatorsPass,
-} from "@/shared/lib/validators";
-import { useRouter } from "next/navigation";
-import Input from "@/shared/ui/input";
-import UserSVG from "@/shared/ui/userSVG";
-import TelegramSVG from "@/shared/ui/telegramSVG";
-import CitySVG from "@/shared/ui/citySVG";
-import PasswordSVG from "@/shared/ui/passwordSVG";
+  validateCity,
+  validatePassword,
+  validateTelegram,
+  validateUsername,
+} from '@/shared/lib/validators';
+import { useRouter } from 'next/navigation';
+import Input from '@/shared/ui/input';
+import UserSVG from '@/shared/ui/userSVG';
+import TelegramSVG from '@/shared/ui/telegramSVG';
+import CitySVG from '@/shared/ui/citySVG';
+import PasswordSVG from '@/shared/ui/passwordSVG';
 
 export function SignUpPage() {
   const router = useRouter();
 
-  const [username, setUsername] = useState("");
-  const [telegram, setTelegram] = useState("");
-  const [city, setCity] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [telegram, setTelegram] = useState('');
+  const [city, setCity] = useState('');
+  const [password, setPassword] = useState('');
 
   const [isFormValid, setIsFormValid] = useState(false);
 
@@ -44,7 +44,7 @@ export function SignUpPage() {
     if (!isFormValid) return;
 
     axios
-      .post("/api/register", {
+      .post('/api/register', {
         username: username,
         telegram: telegram,
         city: city,
@@ -52,11 +52,11 @@ export function SignUpPage() {
       })
       .then((res) => {
         if (res.status == 200) {
-          router.push("/");
+          router.push('/');
         }
       })
       .catch((err) => {
-        alert("Erorr: " + err.response?.data?.message);
+        alert('Erorr: ' + err.response?.data?.message);
         console.log(err);
       });
   };
@@ -109,7 +109,7 @@ export function SignUpPage() {
 
       <div className="p-6">
         <button
-          className={`bg-[#F8D57E] hover:bg-[#E5C47E] rounded-lg w-64 h-10 ${!isFormValid ? "opacity-50 cursor-not-allowed" : ""}`}
+          className={`bg-[#F8D57E] hover:bg-[#E5C47E] rounded-lg w-64 h-10 ${!isFormValid ? 'opacity-50 cursor-not-allowed' : ''}`}
           onSubmit={submitHandler}
         >
           Sign Up
