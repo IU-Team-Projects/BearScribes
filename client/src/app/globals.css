@@ -30,4 +30,36 @@ img {
     height: auto;
     display: block;
     margin: 0 auto;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+
+  html,
+  body {
+    @apply h-full m-0 p-0;
+  }
+
+  *,
+  *::before,
+  *::after {
+    @apply box-border;
+  }
+
+  body {
+    @apply font-sans text-base leading-normal;
+  }
+
+  html,
+  body {
+    @apply flex flex-col;
+  }
+
+  body {
+    @apply flex-1;
+  }
 }
