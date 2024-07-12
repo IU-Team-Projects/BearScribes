@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 
 const Hero: React.FC = () => {
-  const [hasToken, setHasToken] = useState(false);
+  const [, setHasToken] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
