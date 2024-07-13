@@ -49,19 +49,24 @@ export function SignUpPage() {
     if (!isFormValid) return;
 
     axios
-      .post('/api/register', {
-        username: username,
-        telegram: telegram,
-        city: city,
-        password: password,
+      .post('http://localhost:8000/auth/register', {
+        "name": username,
+        "telegram_profile": telegram,
+        "city": city,
+        "password": password,
+        "phone_number": phoneNumber,
       })
       .then((res) => {
-        if (res.status == 200) {
-          router.push('/');
+        if (res.status == 201) {
+          router.push('/login');
+        } else {
+          console.log("Unhandled register response: ", res);
         }
+
       })
       .catch((err) => {
-        alert('Erorr: ' + err.response?.data?.message);
+        setResponseErrorMsg(err?.message)
+
         console.log(err);
       });
   };
