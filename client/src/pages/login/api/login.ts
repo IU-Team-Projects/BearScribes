@@ -22,7 +22,7 @@ const login = async (creds: loginCreds): Promise<loginResponse> => {
   args.append("password", creds.password)
 
   try {
-    const res = await axios.post('http://localhost:8000/auth/token', args);
+    const res = await axios.post(process.env.NEXT_PUBLIC_BACKEND_URL + '/auth/token', args);
 
     if (res.status === 200) {
       return {

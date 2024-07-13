@@ -49,7 +49,7 @@ export function SignUpPage() {
     if (!isFormValid) return;
 
     axios
-      .post('http://localhost:8000/auth/register', {
+      .post(process.env.NEXT_PUBLIC_BACKEND_URL + '/auth/register', {
         "name": username,
         "telegram_profile": telegram,
         "city": city,
