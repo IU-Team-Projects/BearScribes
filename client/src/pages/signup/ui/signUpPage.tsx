@@ -53,8 +53,10 @@ export function SignUpPage() {
     const submitHandler = async (e: FormEvent) => {
         if (!isFormValid) return;
 
+        const backendURL = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+
         axios
-            .post(process.env.NEXT_PUBLIC_BACKEND_URL + '/auth/register', {
+            .post(backendURL + '/auth/register', {
                 name: username,
                 telegram_profile: telegram,
                 city: city,

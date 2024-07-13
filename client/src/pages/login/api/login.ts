@@ -21,11 +21,10 @@ const login = async (creds: loginCreds): Promise<loginResponse> => {
     args.append('username', creds.username);
     args.append('password', creds.password);
 
+    const backendURL = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+
     try {
-        const res = await axios.post(
-            process.env.NEXT_PUBLIC_BACKEND_URL + '/auth/token',
-            args,
-        );
+        const res = await axios.post(backendURL + '/auth/token', args);
 
         if (res.status === 200) {
             return {
