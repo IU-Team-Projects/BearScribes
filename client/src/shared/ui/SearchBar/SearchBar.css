@@ -3,7 +3,6 @@
     justify-content: center;
     margin: 50px 0;
     flex-direction: row;
-
 }
 
 .search-container input {
@@ -13,7 +12,6 @@
     border-radius: 10px;
     outline: none;
     margin-right: 10px;
-
 }
 
 .search-container button {
@@ -21,7 +19,7 @@
     font-size: 18px;
     font-family: Poppins;
     border: none;
-    background-color: #3366FF;
+    background-color: #3366ff;
     color: white;
     border-radius: 10px;
     cursor: pointer;
@@ -29,5 +27,5 @@
 }
 
 .search-container button:hover {
-    background-color: #3366BF;
+    background-color: #3366bf;
 }

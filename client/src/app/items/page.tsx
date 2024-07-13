@@ -1,7 +1,7 @@
 import { ItemsPage } from '@/pages/items';
 
 const Page = () => {
-  return <ItemsPage />;
+    return <ItemsPage />;
 };
 
 export default Page;

@@ -10,89 +10,92 @@ import login from '../api/login';
 import Cookies from 'js-cookie';
 
 export function LoginPage() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [errMsg, setErrMsg] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [errMsg, setErrMsg] = useState('');
 
-  const router = useRouter();
+    const router = useRouter();
 
-  const submitHandler = async (_: FormEvent) => {
+    const submitHandler = async (_: FormEvent) => {
+        setErrMsg('');
 
-    setErrMsg("")
+        if (username == '') {
+            setErrMsg('username have to be non-empty');
 
-    if (username == "") {
-      setErrMsg("username have to be non-empty")
+            return;
+        }
 
-      return
-    }
+        if (password == '') {
+            setErrMsg('password have to be non-empty');
 
-    if (password == "") {
-      setErrMsg("password have to be non-empty")
+            return;
+        }
 
-      return
-    }
+        const { token, resCode, errorMsg } = await login({
+            username,
+            password,
+        });
 
-    const { token, resCode, errorMsg } = await login({ username, password });
+        if (resCode == 401) {
+            setErrMsg('Wrong login or password');
 
-    if (resCode == 401) {
-      setErrMsg("Wrong login or password")
+            return;
+        }
 
-      return
-    }
+        if (errorMsg) {
+            setErrMsg(errorMsg);
 
-    if (errorMsg) {
-      setErrMsg(errorMsg)
+            return;
+        }
 
-      return;
-    }
+        if (token) {
+            console.log('got token: ', token);
 
+            Cookies.set('access_token', token.access_token);
 
-    if (token) {
-      console.log('got token: ', token);
+            router.push('/');
+        }
+    };
 
-      Cookies.set('access_token', token.access_token)
+    return (
+        <form
+            onSubmit={(e) => {
+                e.preventDefault();
+                submitHandler(e);
+            }}
+            className="flex h-full flex-col items-center justify-center"
+        >
+            <div className="mb-12 text-2xl font-semibold">Welcome</div>
 
-      router.push('/');
-    }
-  };
+            <Input
+                svg={<UserSVG />}
+                placeholder="USERNAME"
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+            />
+            <Input
+                svg={<PasswordSVG />}
+                placeholder="PASSWORD"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
 
-  return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        submitHandler(e);
-      }}
-      className="flex flex-col justify-center items-center h-full"
-    >
-      <div className="font-semibold text-2xl mb-12">Welcome</div>
+            <div className="font-red h-5 text-sm font-semibold">{errMsg}</div>
 
-      <Input
-        svg={<UserSVG />}
-        placeholder="USERNAME"
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <Input
-        svg={<PasswordSVG />}
-        placeholder="PASSWORD"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+            <div className="p-6">
+                <button className="h-10 w-64 rounded-lg bg-[#F8D57E]">
+                    Sign In
+                </button>
+            </div>
 
-      <div className='font-red font-semibold h-5 text-sm'>{errMsg}</div>
-
-      <div className="p-6">
-        <button className="bg-[#F8D57E] rounded-lg w-64 h-10">Sign In</button>
-      </div>
-
-      <div className="text-xs p-4">
-        <span className="text-gray-600">Don’t have an account? </span>
-        <Link href="/signup" className="font-bold">
-          Sign Up
-        </Link>
-      </div>
-    </form>
-  );
+            <div className="p-4 text-xs">
+                <span className="text-gray-600">Don’t have an account? </span>
+                <Link href="/signup" className="font-bold">
+                    Sign Up
+                </Link>
+            </div>
+        </form>
+    );
 }

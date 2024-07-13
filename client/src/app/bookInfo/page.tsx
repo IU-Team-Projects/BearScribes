@@ -1,7 +1,7 @@
 import { BookInfoPage } from '@/pages/bookinfo';
 
 const Page = () => {
-  return <BookInfoPage />;
+    return <BookInfoPage />;
 };
 
 export default Page;
