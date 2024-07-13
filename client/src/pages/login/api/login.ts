@@ -17,11 +17,12 @@ interface loginResponse {
 }
 
 const login = async (creds: loginCreds): Promise<loginResponse> => {
+  let args = new FormData()
+  args.append("username", creds.username)
+  args.append("password", creds.password)
+
   try {
-    const res = await axios.post('/api/token', {
-      username: creds.username,
-      password: creds.password,
-    });
+    const res = await axios.post('http://localhost:8000/auth/token', args);
 
     if (res.status === 200) {
       return {
@@ -35,9 +36,11 @@ const login = async (creds: loginCreds): Promise<loginResponse> => {
       };
     }
   } catch (err: any) {
+    console.log(err)
+
     return {
       resCode: err.response?.status || 500,
-      errorMsg: err.response?.data?.message || 'An unknown error occurred',
+      errorMsg: err.message || 'An unknown error occurred',
     };
   }
 };
