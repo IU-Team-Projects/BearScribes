@@ -16,6 +16,17 @@ export const validatePassword = (password: string): string => {
   return 'at least one letter and number, 8 to 32 symbols';
 };
 
+export const validatePhoneNumber = (phoneNumber: string): string => {
+  const phoneNumberRegex = new RegExp(
+    /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/,
+  );
+  if (phoneNumberRegex.test(phoneNumber)) {
+    return '';
+  }
+
+  return 'have to conttain at least 10 digits'
+};
+
 export const validateTelegram = (telegram: string): string => {
   const telegramRegex = new RegExp(
     /.*\B@(?=\w{5,32}\b)[a-zA-Z0-9]+(?:_[a-zA-Z0-9]+)*.*$/,
@@ -28,8 +39,8 @@ export const validateTelegram = (telegram: string): string => {
 };
 
 export const validateCity = (city: string): string => {
-  const telegramRegex = new RegExp(/^[A-Za-z]{2,32}$/);
-  if (telegramRegex.test(city)) {
+  const cityRegex = new RegExp(/^[A-Za-z]{2,32}$/);
+  if (cityRegex.test(city)) {
     return '';
   }
 

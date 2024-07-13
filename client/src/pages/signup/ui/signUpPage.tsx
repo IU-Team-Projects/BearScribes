@@ -9,6 +9,7 @@ import {
   validatePassword,
   validateTelegram,
   validateUsername,
+  validatePhoneNumber
 } from '@/shared/lib/validators';
 import { useRouter } from 'next/navigation';
 import Input from '@/shared/ui/input';
@@ -16,14 +17,18 @@ import UserSVG from '@/shared/ui/userSVG';
 import TelegramSVG from '@/shared/ui/telegramSVG';
 import CitySVG from '@/shared/ui/citySVG';
 import PasswordSVG from '@/shared/ui/passwordSVG';
+import PhoneSVG from '@/shared/ui/phoneSVG';
 
 export function SignUpPage() {
   const router = useRouter();
 
   const [username, setUsername] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [telegram, setTelegram] = useState('');
   const [city, setCity] = useState('');
   const [password, setPassword] = useState('');
+
+  const [responseErrorMsg, setResponseErrorMsg] = useState("");
 
   const [isFormValid, setIsFormValid] = useState(false);
 
@@ -81,11 +86,26 @@ export function SignUpPage() {
       />
 
       <Input
+        svg={<PhoneSVG />}
+        placeholder="PHONE"
+        type="text"
+        value={phoneNumber}
+        onChange={(e) => { setPhoneNumber(e.target.value) }}
+        validator={validatePhoneNumber}
+      />
+
+      <Input
         svg={<TelegramSVG />}
         placeholder="TELEGRAM"
         type="text"
         value={telegram}
-        onChange={(e) => setTelegram(e.target.value)}
+        onChange={(e) => {
+          if (e.target.value[0] != "@") {
+            e.target.value = "@" + e.target.value
+          }
+
+          setTelegram(e.target.value)
+        }}
         validator={validateTelegram}
       />
 
@@ -106,6 +126,10 @@ export function SignUpPage() {
         onChange={(e) => setPassword(e.target.value)}
         validator={validatePassword}
       />
+
+      <div className="h-4 font-semibold text-red text-sm">
+        {responseErrorMsg}
+      </div>
 
       <div className="p-6">
         <button
