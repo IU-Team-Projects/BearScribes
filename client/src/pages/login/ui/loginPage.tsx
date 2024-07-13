@@ -7,23 +7,50 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 import login from '../api/login';
+import Cookies from 'js-cookie';
 
 export function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errMsg, setErrMsg] = useState('');
 
   const router = useRouter();
 
   const submitHandler = async (_: FormEvent) => {
+
+    setErrMsg("")
+
+    if (username == "") {
+      setErrMsg("username have to be non-empty")
+
+      return
+    }
+
+    if (password == "") {
+      setErrMsg("password have to be non-empty")
+
+      return
+    }
+
     const { token, resCode, errorMsg } = await login({ username, password });
 
+    if (resCode == 401) {
+      setErrMsg("Wrong login or password")
+
+      return
+    }
+
     if (errorMsg) {
-      alert(errorMsg);
+      setErrMsg(errorMsg)
+
       return;
     }
 
+
     if (token) {
       console.log('got token: ', token);
+
+      Cookies.set('access_token', token.access_token)
 
       router.push('/');
     }
@@ -54,9 +81,11 @@ export function LoginPage() {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-			<div className="p-6">
-				<button className="bg-[#F8D57E] rounded-lg w-64 h-10">Sign In</button>
-			</div>
+      <div className='font-red font-semibold h-5 text-sm'>{errMsg}</div>
+
+      <div className="p-6">
+        <button className="bg-[#F8D57E] rounded-lg w-64 h-10">Sign In</button>
+      </div>
 
       <div className="text-xs p-4">
         <span className="text-gray-600">Don’t have an account? </span>
