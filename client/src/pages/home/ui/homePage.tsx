@@ -5,13 +5,13 @@ import Footer from '@/shared/ui/Footer/Footer';
 import Header from '@/shared/ui/Header/Header';
 
 export function HomePage() {
-  return (
-    <>
-      <Header />
-      <Hero />
-      <Testimonial />
-      <Contact />
-      <Footer />
-    </>
-  );
+    return (
+        <>
+            <Header />
+            <Hero />
+            <Testimonial />
+            <Contact />
+            <Footer />
+        </>
+    );
 }
