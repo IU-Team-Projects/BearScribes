@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from schemas import Book, BookStandart
+from schemas import Book, BookStandart, User
 from db import get_db
 from models import Book as BookModel, User as UserModel
 import httpx
@@ -24,7 +24,7 @@ async def add_book(book_data: BookStandart, db: AsyncSession = Depends(get_db), 
     book_info = response.json()
     print(f'book_info: {book_info}')
     title = book_info.get("title", "Название не найдено")
-    authors = ", ".join([author.get("name", "") for author in book_info.get("authors", [])])
+    authors = ", ".join(book_info.get("publishers", []))
     cover_url = f"https://covers.openlibrary.org/b/id/{book_info.get('covers', [None])[0]}-L.jpg" if book_info.get('covers') else None  
     db_book = BookModel(
         open_library_book=open_library_id,
@@ -62,3 +62,19 @@ async def delete_user_book(book_id: int, db: AsyncSession = Depends(get_db), cur
     await db.delete(book)
     await db.commit()
     return {"detail": "Book deleted successfully"}
+
+@router.get("/any_user/{book_id}", response_model=dict)
+async def get_book_any_user(book_id: int, db: AsyncSession = Depends(get_db)):
+    result = await db.execute(
+        select(BookModel, UserModel).join(UserModel, BookModel.owner_id == UserModel.id).filter(BookModel.id == book_id)
+    )
+    book_with_owner = result.fetchone()
+
+    if book_with_owner is None:
+        raise HTTPException(status_code=404, detail="Book not found")
+
+    book, owner = book_with_owner
+    return {
+        "book": Book.model_validate(book), 
+        "owner": User.model_validate(owner)
+    }
