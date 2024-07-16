@@ -24,9 +24,7 @@ const login = async (creds: loginCreds): Promise<loginResponse> => {
     const backendURL = process.env.NEXT_PUBLIC_BACKEND_URL || '';
 
     try {
-        const res = await axios.post(backendURL + '/auth/token', args, {
-            withCredential: true,
-        });
+        const res = await axios.post(backendURL + '/auth/token', args);
 
         if (res.status === 200) {
             return {
