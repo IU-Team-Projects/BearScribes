@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 
 const Hero: React.FC = () => {
-    const [hasToken, setHasToken] = useState(false);
+    const [, setHasToken] = useState(false);
     const router = useRouter();
 
     useEffect(() => {
@@ -17,11 +17,7 @@ const Hero: React.FC = () => {
 
     const handleGetStarted = () => {
         if (typeof window !== 'undefined') {
-            if (hasToken) {
-                router.push('/books');
-            } else {
-                router.push('/login');
-            }
+            router.push('/items');
         }
     };
 

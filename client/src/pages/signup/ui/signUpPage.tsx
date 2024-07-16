@@ -7,9 +7,9 @@ import {
     areAllValidatorsPass,
     validateCity,
     validatePassword,
+    validatePhoneNumber,
     validateTelegram,
     validateUsername,
-    validatePhoneNumber,
 } from '@/shared/lib/validators';
 import { useRouter } from 'next/navigation';
 import Input from '@/shared/ui/input';
