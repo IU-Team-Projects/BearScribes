@@ -23,7 +23,7 @@ export function LibraryPage() {
                 });
                 if (!response.ok) {
                     console.error(
-                        `Failed to fetch user info with next token ${token}:`,
+                        `Failed to fetch user info:`,
                         response.statusText,
                     );
                     return;
