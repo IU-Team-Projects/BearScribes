@@ -7,13 +7,15 @@ export const metadata: Metadata = {
     description: 'Bear Scribes Log Ip',
 };
 
-export default ({
+export default function LoginLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
-}>) => (
-    <>
-        <Header />
-        {children}
-    </>
-);
+}>) {
+    return (
+        <>
+            <Header />
+            {children}
+        </>
+    );
+}

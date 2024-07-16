@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     description: 'Bear Scribes Sign Up',
 };
 
-export default function RootLayout({
+export default function SignupLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
