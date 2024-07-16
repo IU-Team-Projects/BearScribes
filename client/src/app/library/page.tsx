@@ -3,7 +3,7 @@
 import { LibraryPage } from '@/pages/library';
 
 const Page = () => {
-  return <LibraryPage />;
+    return <LibraryPage />;
 };
 
 export default Page;
