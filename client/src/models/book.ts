@@ -1,7 +1,7 @@
-interface Book {    
-    id: string, 
-    selfLink: string,
-    volumeInfo: VolumeInfo  
+interface Book {
+    id: string;
+    selfLink: string;
+    volumeInfo: VolumeInfo;
 }
 
 interface VolumeInfo {
@@ -16,5 +16,4 @@ interface VolumeInfo {
     // coverId: string
 }
 
-
-export default Book
+export default Book;

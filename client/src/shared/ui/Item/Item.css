@@ -1,7 +1,7 @@
 .item-container {
-    display: flex; 
+    display: flex;
     justify-content: space-between;
-    background-color: #FCFAF5; 
+    background-color: #fcfaf5;
     border-radius: 30px;
     margin-bottom: 20px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
@@ -26,24 +26,23 @@
 }
 
 .item-text-fields p {
-    color: #2D2D2D; 
+    color: #2d2d2d;
     font-family: Poppins;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
-    line-height: 32px; 
-
+    line-height: 32px;
 }
 
 .item-text-fields button {
     border-radius: 11px;
-    background: #36F;
-    color: #FFF;
+    background: #36f;
+    color: #fff;
     font-family: Poppins;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
-    line-height: 100%; 
+    line-height: 100%;
     width: 150px;
     height: 50px;
     margin-bottom: 15px;
@@ -53,7 +52,7 @@
     margin: 10px 100px;
     /* max-width: 363px; */
     max-width: 250px;
-    /* max-height: 275px; */ 
+    /* max-height: 275px; */
     /* height: 534px; */
     border-radius: 10px;
 }

@@ -2,11 +2,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #CCC9C0;
+    background-color: #ccc9c0;
     width: 100%;
     height: 100%;
     position: absolute;
-
 }
 
 .book-cover-and-info {
@@ -16,12 +15,11 @@
     width: 65%;
     height: 60%;
     border-radius: 10px;
-
 }
 
 .book-info {
     border-radius: 10px;
-    background-color: #FFF2DF;
+    background-color: #fff2df;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,7 +46,7 @@
 }
 
 .line-separator {
-    background-color: #F2E1E1;
+    background-color: #f2e1e1;
     height: 100%;
     width: 10px;
     border-radius: 20px;
@@ -88,16 +86,17 @@
 .book-info-categories p {
     gap: 10px;
 }
+
 .book-info-poster {
     height: 100%;
     border-radius: 10px;
     float: left;
     /* width: 250px; */
 }
+
 .book-info-authors-pages-categories {
     display: flex;
     flex-direction: column;
     /* justify-content: space-between; */
     padding-top: 50px;
-
 }

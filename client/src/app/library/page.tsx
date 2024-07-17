@@ -1,6 +1,9 @@
-import "../../styles/Library.css"
-import Item from "../../components/Item"
+'use client';
 
-export default function Library() {
+import { LibraryPage } from '@/pages/library';
 
-}
+const Page = () => {
+    return <LibraryPage />;
+};
+
+export default Page;

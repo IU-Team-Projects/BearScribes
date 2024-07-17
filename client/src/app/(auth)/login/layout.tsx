@@ -1,20 +1,21 @@
-import Header from "@/shared/ui/header";
-import { Metadata } from "next";
+import Header from '@/shared/ui/header';
+import { Metadata } from 'next';
+import React from 'react';
 
 export const metadata: Metadata = {
-  title: "Login",
-  description: "Bear Scribes Log Ip",
+    title: 'Login',
+    description: 'Bear Scribes Log Ip',
 };
 
-export default function RootLayout({
-  children,
+export default function LoginLayout({
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <>
-      <Header />
-      {children}
-    </>
-  );
+    return (
+        <>
+            <Header />
+            {children}
+        </>
+    );
 }
