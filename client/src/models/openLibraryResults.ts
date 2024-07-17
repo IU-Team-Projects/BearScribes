@@ -1,7 +1,7 @@
-import OpenLibraryBook from "./openLibraryBook"
+import OpenLibraryBook from './openLibraryBook';
 
 interface OpenLibraryResults {
-    docs: OpenLibraryBook[],
+    docs: OpenLibraryBook[];
 }
 
-export default OpenLibraryResults
+export default OpenLibraryResults;
