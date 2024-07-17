@@ -7,6 +7,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 import login from '../api/login';
+import Cookies from 'js-cookie';
+
 
 export function LoginPage() {
     const [username, setUsername] = useState('');
@@ -50,7 +52,7 @@ export function LoginPage() {
         if (token) {
             console.log('got token: ', token);
 
-            // Cookies.set('access_token', `"Bearer ${token.access_token}"`);
+            Cookies.set('access_token', `${token.access_token}`);
 
             router.push('/');
         }
