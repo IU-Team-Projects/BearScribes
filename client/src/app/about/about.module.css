@@ -1,0 +1,219 @@
+@import url('https://fonts.cdnfonts.com/css/poppins');
+
+.about {
+    font-family: 'poppins', sans-serif;
+    font-size: 4rem;
+    font-weight: 750;
+    width: 25rem;
+    height: 7rem;
+    background: #fbd84a;
+    color: #2D2D2D;
+    text-align: center;
+    position: relative;
+    margin: 1rem;
+}
+
+@keyframes moveDown {
+    0% {
+        top: -80rem;
+    }
+    100% {
+        top: 1rem;
+    }
+}
+@keyframes moveRight {
+    0% {
+        left: -100rem;
+    }
+    100% {
+        left: 1rem;
+    }
+}
+@keyframes moveTop {
+    0% {
+        top: 100rem;
+    }
+    100% {
+        top: 10rem;
+    }
+}
+@keyframes move1 {
+    0% {
+        top: 110rem;
+    }
+    100% {
+       top: 20rem;
+    }
+}
+@keyframes move2 {
+    0% {
+        top: 120rem;
+    }
+    100% {
+        top: 30rem;
+    }
+}
+@keyframes move3 {
+    0% {
+        top: 130rem;
+    }
+    100% {
+        top: 40rem;
+    }
+}
+.text_description {
+    color: #2D2D2D;
+
+    position: absolute;
+    left: 30rem;
+    top: 1rem;
+
+    font-family: 'poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    width: 40rem;
+    height: 7rem;
+    border:  solid 0.4rem #2D2D2D;
+    animation: moveDown 2s;
+}
+
+
+.participants {
+
+    position: absolute;
+    font-size: 2.25rem;
+    font-family: 'poppins', sans-serif;
+    font-weight: bolder;
+    width: 25rem;
+    left: 1rem;
+    height: 38rem;
+    color: #2D2D2D;
+    border:  solid 0.4rem #2D2D2D;
+    top: 10rem;
+    animation: moveRight 2s;
+}
+
+
+
+
+.li{
+
+    border-top: solid 0.3rem #2D2D2D;
+    height: 6.5rem;
+    text-align: center;
+}
+
+.final {
+    color: #2D2D2D;
+    position: absolute;
+
+    left: 35rem;
+    text-align: center;
+    font-family: 'poppins', sans-serif;
+    font-size: 2rem;
+    top: 100rem;
+    font-weight: bolder;
+    width: 30rem;
+    border: solid 6px #2D2D2D;
+    animation: moveTop 2s ease-in-out 2s forwards;
+}
+.bottom {
+    font-size: 0.875rem;
+    color: #6c757d;
+    width: 30rem;
+    position: absolute;
+    top:58rem;
+    left: 50rem;
+    text-align: center;
+
+}
+.button_git {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    position: absolute;
+    color: #fff;
+    width: 10rem;
+    top: 110rem;
+    left: 45rem;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: move1 2s ease-in-out 2s forwards;
+
+    &:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+    }
+}
+.button_tg {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    position: absolute;
+    color: #fff;
+    width: 10rem;
+    top: 120rem;
+    left: 45rem;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: move2 2s ease-in-out 2s forwards;
+
+    &:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+    }
+}
+.button_vk {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    position: absolute;
+    color: #fff;
+    width: 10rem;
+    top: 130rem;
+    left: 45rem;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: move3 2s ease-in-out 2s forwards;
+
+    &:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+    }
+}
+
+.image1 {
+    position: relative;
+    width: 30rem;
+    height: 30rem;
+    left: 85rem;
+    top: -10rem;
+}
+.image2 {
+    position: relative;
+    width: 35rem;
+    height: 30rem;
+    left: 82.2rem;
+    top: -10rem;
+}

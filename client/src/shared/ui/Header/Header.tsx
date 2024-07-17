@@ -19,7 +19,6 @@ const Header: React.FC = () => {
       router.push(path);
     }
   };
-
   return (
     <header className={styles.header}>
       <div className={styles.logo}>BEAR SCRIBES</div>
@@ -45,6 +44,7 @@ const Header: React.FC = () => {
             >
               Log in
             </button>
+
           </>
         )}
       </div>
@@ -53,3 +53,4 @@ const Header: React.FC = () => {
 };
 
 export default Header;
+

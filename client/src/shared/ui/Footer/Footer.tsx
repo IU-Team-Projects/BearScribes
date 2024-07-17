@@ -43,6 +43,11 @@ const Footer: React.FC = () => {
               <a href="mailto:a.mukhutdinov@innopolis.university">Contact</a>
             </li>
             <li>FAQ</li>
+            <li>
+            <button className={styles.linkButton}
+                    onClick={() => handleNavigation('/about')} > About Us
+            </button>
+            </li>
           </ul>
         </div>
         <div>
