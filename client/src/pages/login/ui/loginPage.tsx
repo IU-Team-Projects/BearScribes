@@ -9,7 +9,6 @@ import { FormEvent, useState } from 'react';
 import login from '../api/login';
 import Cookies from 'js-cookie';
 
-
 export function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
