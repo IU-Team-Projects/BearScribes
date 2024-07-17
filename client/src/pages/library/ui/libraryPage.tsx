@@ -38,6 +38,7 @@ export function LibraryPage() {
         const fetchBooks = async () => {
             try {
                 const response = await fetch(backendURL + '/books/', {
+                    credentials: 'include',
                     headers: {
                         accept: 'application/json',
                     },
