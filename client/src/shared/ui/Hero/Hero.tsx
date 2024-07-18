@@ -17,7 +17,7 @@ const Hero: React.FC = () => {
 
     const handleGetStarted = () => {
         if (typeof window !== 'undefined') {
-            router.push('/items');
+            router.push('/searchBooks');
         }
     };
 
