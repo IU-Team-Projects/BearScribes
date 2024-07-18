@@ -24,8 +24,13 @@
     border-radius: 10px;
     cursor: pointer;
     outline: none;
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+
 }
 
 .search-container button:hover {
     background-color: #3366bf;
+    transform: scale(1.05);
 }
