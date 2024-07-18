@@ -6,8 +6,8 @@ import styles from './SearchBooksHeader.module.scss';
 const SearchBooksHeader: React.FC = () => {
     const [hasToken, setHasToken] = useState(false);
     const router = useRouter();
-    const pathname = usePathname();
-    const isLibraryPage = pathname === '/library';  
+    const pathname = usePathname() as string;
+    const isLibraryPage = pathname.match('/library');
 
     useEffect(() => {
         if (typeof window !== 'undefined') {

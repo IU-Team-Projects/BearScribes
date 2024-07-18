@@ -1,10 +1,7 @@
 'use client';
 
 import { HomePage } from '@/pages/home';
-import { SearchBooksPage } from '@/pages/searchBooks';
 
-// const Page = () => <HomePage />;
-const Page = () => <SearchBooksPage />;
-
+const Page = () => <HomePage />;
 
 export default Page;

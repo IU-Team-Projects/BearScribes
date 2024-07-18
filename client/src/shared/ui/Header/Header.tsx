@@ -31,7 +31,7 @@ const Header: React.FC = () => {
                         <>
                             <button
                                 className={styles.button}
-                                onClick={() => handleNavigation('/add')}
+                                onClick={() => handleNavigation('/searchBooks')}
                             >
                                 Add new book
                             </button>
