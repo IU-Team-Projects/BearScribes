@@ -23,12 +23,12 @@ const BookGrid: React.FC<BookGridProps> = ({ books }) => {
                     className={styles.bookCard}
                     onClick={() => handleBookClick(book.id)}
                 >
-                    <Image
-                        src={book.volumeInfo.coverId}
-                        alt={book.volumeInfo.title}
-                        width={500}
-                        height={500}
-                    />
+                    {/*<Image*/}
+                    {/*    src={book.volumeInfo.coverId}*/}
+                    {/*    alt={book.volumeInfo.title}*/}
+                    {/*    width={500}*/}
+                    {/*    height={500}*/}
+                    {/*/>*/}
                     <h3>{book.volumeInfo.title}</h3>
                     <p>{book.volumeInfo.authors.join(', ')}</p>
                 </div>
