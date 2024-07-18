@@ -1,9 +1,9 @@
 interface UserBook {
-    name: string;
-    username: string;
-    description: string;
-    telegram: string;
-    cover: string;
+    open_library_book: string;
+    id: number;
+    title: string;
+    authors: string;
+    cover_url: string;
 }
 
 export default UserBook;

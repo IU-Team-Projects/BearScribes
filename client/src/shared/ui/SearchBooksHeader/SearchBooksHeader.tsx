@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { usePathname, useRouter } from 'next/navigation';
-import styles from './Header.module.scss';
+import styles from './SearchBooksHeader.module.scss';
 
-const Header: React.FC = () => {
+const SearchBooksHeader: React.FC = () => {
     const [hasToken, setHasToken] = useState(false);
     const router = useRouter();
     const pathname = usePathname() as string;
@@ -31,7 +31,7 @@ const Header: React.FC = () => {
                         <>
                             <button
                                 className={styles.button}
-                                onClick={() => handleNavigation('/searchBooks')}
+                                onClick={() => handleNavigation('/add')}
                             >
                                 Add new book
                             </button>
@@ -71,4 +71,4 @@ const Header: React.FC = () => {
     );
 };
 
-export default Header;
+export default SearchBooksHeader;
