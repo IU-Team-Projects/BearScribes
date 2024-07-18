@@ -1,10 +1,12 @@
 'use client';
 
-import '@/pages//items/ui/Items.css';
+import '@/pages/items/ui/Items.css';
 import '@/shared/ui/SearchBar/SearchBar.css';
 import SearchItem from '../../../shared/ui/SearchItem/SearchItem';
-import Footer from '@/shared/ui/Footer/Footer';
-import Header from '@/shared/ui/Header/Header';
+
+import SearchBooksHeader from '../../../shared/ui/SearchBooksHeader/SearchBooksHeader';
+import SearchBooksFooter from '../../../shared/ui/SearchBooksFooter/SearchBooksFooter';
+
 import OpenLibraryBook from '@/models/openLibraryBook';
 import OpenLibraryResults from '@/models/openLibraryResults';
 import { useEffect, useState } from 'react';
@@ -13,6 +15,7 @@ import { OrbitProgress } from 'react-loading-indicators';
 const defaultBooks: OpenLibraryBook[] = [
     {
         author_name: ['Author One'],
+        cover_edition_key: 'a;sldkfj;als',
         cover_i: 123456,
         first_publish_year: 2000,
         first_sentence: ['First sentence of the book.'],
@@ -21,6 +24,7 @@ const defaultBooks: OpenLibraryBook[] = [
     },
     {
         author_name: ['Author Two'],
+        cover_edition_key: 'a;sldkfj;als',
         cover_i: 789101,
         first_publish_year: 2010,
         first_sentence: ['Another first sentence.'],
@@ -28,6 +32,9 @@ const defaultBooks: OpenLibraryBook[] = [
         cover_url: 'http://example.com/cover2.jpg',
     },
 ];
+
+const defaultBookCover: string =
+    'https://static.vecteezy.com/system/resources/thumbnails/019/900/152/small_2x/old-book-watercolor-illustration-png.png';
 
 export function SearchBooksPage() {
     let [books, setBooks] = useState<OpenLibraryBook[]>(defaultBooks);
@@ -61,13 +68,14 @@ export function SearchBooksPage() {
             const books: OpenLibraryBook[] = openLibraryResults.docs.map(
                 (doc) => ({
                     author_name: doc.author_name || [],
+                    cover_edition_key: doc.cover_edition_key || '',
                     cover_i: doc.cover_i || 0,
                     first_publish_year: doc.first_publish_year || 0,
                     first_sentence: doc.first_sentence || [],
                     title: doc.title || '',
                     cover_url: doc.cover_i
                         ? `https://covers.openlibrary.org/b/id/${doc.cover_i}-L.jpg`
-                        : 'https://static.vecteezy.com/system/resources/thumbnails/019/900/152/small_2x/old-book-watercolor-illustration-png.png',
+                        : defaultBookCover,
                 }),
             );
 
@@ -87,7 +95,7 @@ export function SearchBooksPage() {
 
     return (
         <div className="items-container">
-            <Header />
+            <SearchBooksHeader />
             <div className="search-container">
                 <input
                     type="text"
@@ -123,7 +131,7 @@ export function SearchBooksPage() {
                 </div>
             )}
 
-            <Footer />
+            <SearchBooksFooter />
         </div>
     );
 }
