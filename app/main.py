@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-import db 
+import db
 from routers import auth, books
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -27,11 +27,7 @@ app.include_router(books.router)
 async def startup_event():
     await db.init_db()
 
-
-
 @app.get("/")
 async def root():
     return {"message": "Это бэкенд API!"}
-
-
 

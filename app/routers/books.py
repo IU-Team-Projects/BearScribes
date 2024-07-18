@@ -24,12 +24,26 @@ async def add_book(book_data: BookStandart, db: AsyncSession = Depends(get_db), 
     book_info = response.json()
     print(f'book_info: {book_info}')
     title = book_info.get("title", "Название не найдено")
-    authors = ", ".join(book_info.get("publishers", []))
+    author_keys = book_info.get("authors", [])
+    authors = []
+
+    for entry in author_keys:
+        author = entry.get("author")
+        if author:
+            author_key = author.get("key")
+            if author_key:
+                async with httpx.AsyncClient(follow_redirects=True, timeout=30.0) as client:
+                    author_response = await client.get(f"https://openlibrary.org{author_key}.json")
+                author_info = author_response.json()
+                authors.append(author_info.get("name", "Имя автора не найдено"))
+
+    authors_str = ", ".join(authors)
+
     cover_url = f"https://covers.openlibrary.org/b/id/{book_info.get('covers', [None])[0]}-L.jpg" if book_info.get('covers') else None  
     db_book = BookModel(
         open_library_book=open_library_id,
         title=title,
-        authors=authors,
+        authors=authors_str,
         cover_url=cover_url,
         owner_id=current_user.id,
     )
@@ -64,9 +78,11 @@ async def delete_user_book(book_id: int, db: AsyncSession = Depends(get_db), cur
     return {"detail": "Book deleted successfully"}
 
 @router.get("/any_user/{book_id}", response_model=dict)
-async def get_book_any_user(book_id: int, db: AsyncSession = Depends(get_db)):
+async def get_book_any_user(book_id: int, db: AsyncSession = Depends(get_db), current_user: UserModel = Depends(get_current_user)):
     result = await db.execute(
-        select(BookModel, UserModel).join(UserModel, BookModel.owner_id == UserModel.id).filter(BookModel.id == book_id)
+        select(BookModel, UserModel)
+        .join(UserModel, BookModel.owner_id == UserModel.id)
+        .filter(BookModel.id == book_id)
     )
     book_with_owner = result.fetchone()
 
@@ -74,7 +90,21 @@ async def get_book_any_user(book_id: int, db: AsyncSession = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Book not found")
 
     book, owner = book_with_owner
+    is_owner = owner.id == current_user.id  # Проверяем, является ли текущий пользователь владельцем книги
+
     return {
-        "book": Book.model_validate(book), 
-        "owner": User.model_validate(owner)
+        "book": Book.model_validate(book),
+        "owner": User.model_validate(owner),
+        "is_owner": is_owner  # Добавляем информацию о том, является ли текущий пользователь владельцем книги
     }
+
+@router.get("/users_book/search", response_model=list[Book])
+async def search_books_by_title(title: str, db: AsyncSession = Depends(get_db), current_user: UserModel = Depends(get_current_user)):
+    result = await db.execute(
+        select(BookModel)
+        .join(UserModel, BookModel.owner_id == UserModel.id)
+        .filter(BookModel.title.ilike(f"%{title}%"))
+        .filter(UserModel.city == current_user.city)
+    )
+    books = result.scalars().all()
+    return books

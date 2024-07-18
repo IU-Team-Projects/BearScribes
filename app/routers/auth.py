@@ -60,9 +60,10 @@ async def get_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db:
     access_token = create_access_token(
         data={"sub": user.name}, expires_delta=token_time_life
     )
+    print(access_token)
     
     response = JSONResponse(content={"access_token": access_token, "token_type": "bearer"})
-    response.set_cookie(key="access_token", value=f"Bearer {access_token}", httponly=True)
+    response.set_cookie(key="access_token", value=f"Bearer {access_token}", httponly=True, samesite='None', secure=True, domain='www.backendus.com')
     
     return response
 
@@ -73,6 +74,8 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/token")
 
 async def get_current_user(request: Request, db: AsyncSession = Depends(get_db)):
     token = request.cookies.get("access_token")
+    print(type(token))
+    print(f"Token from cookies: {token}") 
     if not token:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -86,7 +89,8 @@ async def get_current_user(request: Request, db: AsyncSession = Depends(get_db))
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        payload = jwt.decode(token.split(" ")[1], SECRET_KEY, algorithms=[ALGORITHM])
+        #payload = jwt.decode(token.split(" ")[1], SECRET_KEY, algorithms=[ALGORITHM])
+        payload = jwt.decode(token.replace('%22', '').strip('"'), SECRET_KEY, algorithms=[ALGORITHM])
         username: str = payload.get("sub")
         if username is None:
             raise credentials_exception
