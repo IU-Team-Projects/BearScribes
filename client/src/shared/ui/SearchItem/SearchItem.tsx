@@ -5,17 +5,15 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import UserBook from '@/models/userBook';
 
-
 const SearchItem = ({ book }: { book: OpenLibraryBook }) => {
     const coverURL = `https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`;
 
     const [books, setBooks] = useState<UserBook[]>([]);
-  
+
     const [message, setMessage] = useState('');
 
-    const backendURL =  process.env.NEXT_PUBLIC_BACKEND_URL || '';
-    const backendBooksURL = backendURL + "/books"
-
+    const backendURL = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+    const backendBooksURL = backendURL + '/books';
 
     const fetchBooks = async () => {
         try {
@@ -25,16 +23,13 @@ const SearchItem = ({ book }: { book: OpenLibraryBook }) => {
                     accept: 'application/json',
                 },
             });
-            console.log(response)
+            console.log(response);
             if (!response.ok) {
-                console.error(
-                    'Failed to fetch books:',
-                    response.statusText,
-                );
+                console.error('Failed to fetch books:', response.statusText);
                 return;
             }
             const data = await response.json();
-            console.log('Books data:', data); 
+            console.log('Books data:', data);
 
             if (Array.isArray(data)) {
                 const transformedBooks = data.map((book: UserBook) => ({
@@ -42,7 +37,7 @@ const SearchItem = ({ book }: { book: OpenLibraryBook }) => {
                     id: book.id,
                     title: book.title,
                     authors: book.authors,
-                    cover_url: book.cover_url
+                    cover_url: book.cover_url,
                 }));
                 setBooks(transformedBooks);
             } else {
@@ -54,13 +49,15 @@ const SearchItem = ({ book }: { book: OpenLibraryBook }) => {
     };
 
     useEffect(() => {
-        fetchBooks()
-    })
-        
+        fetchBooks();
+    });
+
     const checkIfBookExist = (openLibraryId: string): boolean => {
-        return books.some(fetchedBook => fetchedBook.open_library_book == openLibraryId)
-    }
-    
+        return books.some(
+            (fetchedBook) => fetchedBook.open_library_book == openLibraryId,
+        );
+    };
+
     const addBook = async () => {
         const payload = {
             open_library_book: book.cover_edition_key,
@@ -75,10 +72,10 @@ const SearchItem = ({ book }: { book: OpenLibraryBook }) => {
         };
 
         if (checkIfBookExist(book.cover_edition_key)) {
-            setMessage("Book is already added!!!")
-            return 
+            setMessage('Book is already added!!!');
+            return;
         } else {
-            setMessage("Added book to library")
+            setMessage('Added book to library');
         }
 
         fetch(backendBooksURL, { ...options, credentials: 'include' })
@@ -116,7 +113,13 @@ const SearchItem = ({ book }: { book: OpenLibraryBook }) => {
                     <p>First sentence: {book.first_sentence}</p>
                 </div>
                 {message ? (
-                    <p style={{ fontSize: '20px', fontWeight: 'bold' , color: "red"}}>
+                    <p
+                        style={{
+                            fontSize: '20px',
+                            fontWeight: 'bold',
+                            color: 'red',
+                        }}
+                    >
                         {message}
                     </p>
                 ) : (
