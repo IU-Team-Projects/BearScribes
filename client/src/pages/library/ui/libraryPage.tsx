@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useEffect, useState } from 'react';
 import Header from '@/shared/ui/Header/Header';
 import Footer from '@/shared/ui/Footer/Footer';
@@ -85,10 +84,12 @@ export function LibraryPage() {
     }, [backendURL]);
 
     return (
-        <div className={styles.libraryPage}>
+        <div className={styles.pageContainer}>
             <Header />
-            {userInfo && <UserInfo {...userInfo} />}
-            <BookGrid books={books} />
+            <div className={styles.content}>
+                {userInfo && <UserInfo {...userInfo} />}
+                <BookGrid books={books} />
+            </div>
             <Footer />
         </div>
     );

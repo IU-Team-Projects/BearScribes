@@ -1,14 +1,23 @@
 .userInfo {
-    margin: 1rem 0;
-    text-align: center;
+  margin: 1rem 0;
+  padding: 1.5rem;
+  text-align: center;
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
 
-    h2 {
-        font-size: 2rem;
-        color: #343a40;
-    }
+  h2 {
+    font-size: 2rem;
+    color: #343a40;
+    margin-bottom: 0.5rem;
+  }
 
-    p {
-        font-size: 1rem;
-        color: #6c757d;
-    }
+  p {
+    font-size: 1rem;
+    color: #6c757d;
+    margin: 0.25rem 0;
+  }
 }

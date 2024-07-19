@@ -1,40 +1,49 @@
 .bookGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    width: 100%;
-    max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.noBooks {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 1.25rem;
+  color: #6c757d;
 }
 
 .bookCard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
     border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+  }
 
-    img {
-        width: 100%;
-        height: auto;
-        margin-bottom: 1rem;
-    }
+  h3 {
+    font-size: 1.25rem;
+    color: #343a40;
+    margin-bottom: 0.5rem;
+  }
 
-    h3 {
-        font-size: 1.25rem;
-        color: #343a40;
-        margin-bottom: 0.5rem;
-    }
+  p {
+    font-size: 1rem;
+    color: #6c757d;
+  }
 
-    p {
-        font-size: 1rem;
-        color: #6c757d;
-    }
-
-    &:hover {
-        transform: scale(1.05);
-    }
+  &:hover {
+    transform: scale(1.05);
+  }
 }
