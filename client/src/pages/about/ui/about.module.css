@@ -1,0 +1,335 @@
+@import url('https://fonts.cdnfonts.com/css/poppins');
+
+
+@keyframes moveDown {
+    0% {
+        top: -80vw;
+    }
+    100% {
+        top: 1vw;
+    }
+}
+@keyframes moveRight {
+    0% {
+        left: -100vw;
+    }
+    100% {
+        left: 1vw;
+    }
+}
+@keyframes moveTop {
+    0% {
+        top: 300vw;
+    }
+    100% {
+        top: 10vw;
+    }
+}
+@keyframes move1 {
+    0% {
+        top: 310vw;
+    }
+    100% {
+       top: 20vw;
+    }
+}
+@keyframes move2 {
+    0% {
+        top: 320vw;
+    }
+    100% {
+        top: 30vw;
+    }
+}
+@keyframes move3 {
+    0% {
+        top: 330vw;
+    }
+    100% {
+        top: 40vw;
+    }
+}
+@keyframes movelamp {
+    0% {
+        top: 320vw;
+    }
+    100% {
+        top: 10vw;
+    }
+}
+.about {
+    font-family: 'poppins', sans-serif;
+    font-size: 4vw;
+    font-weight: 750;
+    width: 25vw;
+    height: 7vw;
+    background: #fbd84a;
+    color: #2D2D2D;
+    text-align: center;
+    position: relative;
+    margin: 1vw;
+    @media (max-width: 768px) {
+        left: 30vw;
+        width: 40vw;
+        height: 10vw;
+        font-size: 6.5vw;
+    }
+}
+.return {
+    padding: 1vw 2vw;
+    font-size: 1.2vw;
+    position: absolute;
+    color: #fff;
+    width: 10vw;
+    top: 50vw;
+    left: 80vw;
+    background-color: #007bff;
+    border: none;
+    border-radius: 0.5vw;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+    }
+    @media (max-width: 768px) {
+        left: 40vw;
+        width: 20vw;
+        top: 210vw;
+
+    }
+
+}
+.text_description {
+    color: #2D2D2D;
+
+    position: absolute;
+    left: 30vw;
+    top: 1vw;
+
+    font-family: 'poppins', sans-serif;
+    font-size: 1.5vw;
+    font-weight: bolder;
+    width: 40vw;
+    height: 7vw;
+    border:  solid 0.4vw #2D2D2D;
+    animation: moveDown 2s;
+    @media (max-width: 768px) {
+        left: 31vw;
+        width: 40vw;
+        height: 30vw;
+        top: 12vw;
+        font-size: 3vw;
+        text-align: center;
+    }
+}
+
+
+.participants {
+
+    position: absolute;
+    font-size: 2.25vw;
+    font-family: 'poppins', sans-serif;
+    font-weight: bolder;
+    width: 25vw;
+    left: 1vw;
+    height: 38vw;
+    color: #2D2D2D;
+    border:  solid 0.4vw #2D2D2D;
+    top: 10vw;
+    animation: moveRight 2s;
+    @media (max-width: 768px) {
+        left: 31vw;
+        width: 40vw;
+        height: 42vw;
+        top: 44vw;
+        font-size: 3vw;
+        text-align: center;
+    }
+}
+
+
+
+
+.li{
+
+    border-top: solid 0.3vw #2D2D2D;
+    height: 6.5vw;
+    text-align: center;
+}
+
+.final {
+    color: #2D2D2D;
+    position: absolute;
+    background: #fbd84a;
+    left: 35vw;
+    text-align: center;
+    font-family: 'poppins', sans-serif;
+    font-size: 2vw;
+    top: 10vw;
+    font-weight: bolder;
+    width: 30vw;
+    border: solid 0.5vw #2D2D2D;
+    animation: moveTop 4s;
+    @media (max-width: 768px) {
+        left: 31vw;
+        width: 40vw;
+        height: 10vw;
+        top: 88vw;
+        font-size: 3vw;
+    }
+}
+.button_git {
+    padding: 1vw 2vw;
+    font-size: 1vw;
+    position: absolute;
+    color: #fff;
+    width: 10vw;
+    top: 20vw;
+    left: 45vw;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: move1 4s;
+
+    &:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+    }
+    @media (max-width: 768px) {
+        left: 40vw;
+        width: 20vw;
+        top: 105vw;
+        font-size: 3vw;
+    }
+}
+.button_tg {
+    padding: 1vw 2vw;
+    font-size: 1vw;
+    position: absolute;
+    color: #fff;
+    width: 10vw;
+    top: 30vw;
+    left: 45vw;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: move2 4s;
+    @media (max-width: 768px) {
+        left: 40vw;
+        width: 20vw;
+        top: 120vw;
+        font-size: 3vw;
+    }
+    &:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+    }
+}
+.button_vk {
+    padding: 1vw 2vw;
+    font-size: 1vw;
+    position: absolute;
+    color: #fff;
+    width: 10vw;
+    top: 40vw;
+    left: 45vw;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: move3 4s;
+    @media (max-width: 768px) {
+        left: 40vw;
+        width: 20vw;
+        top: 135vw;
+        font-size: 3vw;
+    }
+    &:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+    }
+}
+.lamp {
+    position: relative;
+    width: 15vw;
+    height: 15vw;
+    left: 28vw;
+    top: 10vw;
+    animation: movelamp 4s;
+    @media (max-width: 768px) {
+        display: none;
+    }
+}
+.image1 {
+    position: relative;
+    width: 20vw;
+    height: 25vw;
+    left: 75vw;
+    top: -13vw;
+    @media (max-width: 768px) {
+        left: 37.5vw;
+        width: 25vw;
+        height: 35vw;
+        top: 135vw;
+        font-size: 3vw;
+    }
+}
+.image2 {
+    position: relative;
+    width: 20vw;
+    height: 10vw;
+    left: 76vw;
+    top: -12vw;
+    @media (max-width: 768px) {
+        left: 38.5vw;
+        width: 25vw;
+        height: 15vw;
+        top: 140vw;
+        font-size: 3vw;
+    }
+}
+
+.footer_wrapper {
+
+    position: absolute;
+    top: 90%;
+    left: 33.6vw;
+    @media (max-width: 1300px) {
+        width: 2vw;
+        height: 20vw;
+        left: 34vw;
+    }
+    @media (max-width: 768px) {
+        left: 40vw;
+        width: 20vw;
+        top: 215vw;
+    }
+}
+
