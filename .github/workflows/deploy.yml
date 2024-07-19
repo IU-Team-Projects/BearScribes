@@ -4,6 +4,11 @@ on:
     branches:
       - main
       - frontend
+  pull_request:
+    branches:
+      - main
+      - frontend
+
 jobs:
   lint:
     runs-on: ubuntu-latest
