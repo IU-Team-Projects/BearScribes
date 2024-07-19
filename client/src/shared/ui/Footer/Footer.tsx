@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState,useEffect} from 'react';
 import styles from './Footer.module.scss';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 
+
 const Footer: React.FC = () => {
+
   const [hasToken, setHasToken] = useState(false);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -44,9 +47,7 @@ const Footer: React.FC = () => {
             </li>
             <li>FAQ</li>
             <li>
-            <button className={styles.linkButton}
-                    onClick={() => handleNavigation('/about')} > About Us
-            </button>
+
             </li>
           </ul>
         </div>

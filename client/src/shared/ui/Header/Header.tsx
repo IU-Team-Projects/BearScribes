@@ -31,21 +31,24 @@ const Header: React.FC = () => {
             My Library
           </button>
         ) : (
-          <>
-            <button
-              className={styles.button}
-              onClick={() => handleNavigation('/signup')}
-            >
-              Sign Up
-            </button>
-            <button
-              className={styles.button}
-              onClick={() => handleNavigation('/login')}
-            >
-              Log in
-            </button>
+            <>
+                <button className={styles.button}
+                        onClick={() => handleNavigation('/about')}> About Us
+                </button>
+                <button
+                    className={styles.button}
+                    onClick={() => handleNavigation('/signup')}
+                >
+                    Sign Up
+                </button>
+                <button
+                    className={styles.button}
+                    onClick={() => handleNavigation('/login')}
+                >
+                    Log in
+                </button>
 
-          </>
+            </>
         )}
       </div>
     </header>
