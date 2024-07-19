@@ -49,7 +49,10 @@ const Footer: React.FC = () => {
                         <li>
                             <button
                                 className={styles.linkButton}
-                                onClick={() => handleNavigation('/about')}> FAQ
+                                onClick={() => handleNavigation('/about')}
+                            >
+                                {' '}
+                                FAQ
                             </button>
                         </li>
                     </ul>
@@ -57,7 +60,7 @@ const Footer: React.FC = () => {
                 <div>
                     <h3>SharePoint</h3>
                     <ul>
-                    {hasToken && (
+                        {hasToken && (
                             <>
                                 <li>
                                     <button
