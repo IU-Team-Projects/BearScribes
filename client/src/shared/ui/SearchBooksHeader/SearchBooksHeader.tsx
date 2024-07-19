@@ -11,7 +11,7 @@ const SearchBooksHeader: React.FC = () => {
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            const token = Cookies.get('access_token');
+            const token = Cookies.get('is_authorized');
             setHasToken(!!token);
         }
     }, []);

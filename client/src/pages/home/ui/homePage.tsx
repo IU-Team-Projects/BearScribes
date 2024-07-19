@@ -1,3 +1,5 @@
+'use client';
+
 import Hero from '@/shared/ui/Hero/Hero';
 import Testimonial from '@/shared/ui/Testimonial/Testimonial';
 import Contact from '@/shared/ui/Contact/Contact';
