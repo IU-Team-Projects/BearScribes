@@ -1,0 +1,26 @@
+name: Run linter and formatter
+on:
+  push:
+    branches:
+      - main
+      - frontend
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./client
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm install
+      - name: Run lint script
+        run: npm run lint
+      - name: Run prettier
+        run: |-
+          npx prettier --check src

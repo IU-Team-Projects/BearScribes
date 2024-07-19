@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 
 interface SignupRequest {
     username: string;
@@ -10,9 +10,9 @@ interface SignupRequest {
 export const POST = async (request: NextRequest) => {
     const data: SignupRequest = await request.json();
 
-    if (data.username.includes("bad")) {
-        return NextResponse.json({ message: "bad username" }, { status: 422 });
+    if (data.username.includes('bad')) {
+        return NextResponse.json({ message: 'bad username' }, { status: 422 });
     }
 
-    return NextResponse.redirect(new URL("/", request.url));
+    return NextResponse.redirect(new URL('/', request.url));
 };
