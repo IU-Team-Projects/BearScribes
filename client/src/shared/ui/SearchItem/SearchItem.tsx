@@ -22,8 +22,8 @@ const SearchItem = ({ book }: { book: OpenLibraryBook }) => {
     }, []);
 
     const addBook = () => {
-        // const url = "http://134.0.118.132:8001/books"
-        const url = 'http://127.0.0.1:8000/books';
+        const backendURL = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+
         const payload = {
             open_library_book: book.cover_edition_key,
         };
@@ -36,7 +36,7 @@ const SearchItem = ({ book }: { book: OpenLibraryBook }) => {
             body: JSON.stringify(payload),
         };
 
-        fetch(url, options)
+        fetch(backendURL, options)
             .then((response) => {
                 if (response.status === 404) {
                     console.error('Error: Resource not found (404)');
