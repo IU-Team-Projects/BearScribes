@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            const token = Cookies.get('access_token');
+            const token = Cookies.get('is_authorized');
             setHasToken(!!token);
         }
     }, []);
@@ -47,13 +47,12 @@ const Footer: React.FC = () => {
                             </a>
                         </li>
                         <li>
-                            <button
-                                className={styles.linkButton}
+                            <a
+                                className={styles.link}
                                 onClick={() => handleNavigation('/about')}
                             >
-                                {' '}
                                 FAQ
-                            </button>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -63,24 +62,24 @@ const Footer: React.FC = () => {
                         {hasToken && (
                             <>
                                 <li>
-                                    <button
-                                        className={styles.linkButton}
+                                    <a
+                                        className={styles.link}
                                         onClick={() =>
                                             handleNavigation('/books')
                                         }
                                     >
                                         Books
-                                    </button>
+                                    </a>
                                 </li>
                                 <li>
-                                    <button
-                                        className={styles.linkButton}
+                                    <a
+                                        className={styles.link}
                                         onClick={() =>
                                             handleNavigation('/library')
                                         }
                                     >
                                         My Library
-                                    </button>
+                                    </a>
                                 </li>
                             </>
                         )}

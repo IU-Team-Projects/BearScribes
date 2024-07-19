@@ -9,7 +9,7 @@ const SearchBooksFooter: React.FC = () => {
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            const token = Cookies.get('access_token');
+            const token = Cookies.get('is_authorized');
             setHasToken(!!token);
         }
     }, []);
@@ -46,7 +46,14 @@ const SearchBooksFooter: React.FC = () => {
                                 Contact
                             </a>
                         </li>
-                        <li>FAQ</li>
+                        <li>
+                            <a
+                                className={styles.link}
+                                onClick={() => handleNavigation('/about')}
+                            >
+                                FAQ
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div>
@@ -55,24 +62,24 @@ const SearchBooksFooter: React.FC = () => {
                         {hasToken && (
                             <>
                                 <li>
-                                    <button
-                                        className={styles.linkButton}
+                                    <a
+                                        className={styles.link}
                                         onClick={() =>
                                             handleNavigation('/books')
                                         }
                                     >
                                         Books
-                                    </button>
+                                    </a>
                                 </li>
                                 <li>
-                                    <button
-                                        className={styles.linkButton}
+                                    <a
+                                        className={styles.link}
                                         onClick={() =>
                                             handleNavigation('/library')
                                         }
                                     >
                                         My Library
-                                    </button>
+                                    </a>
                                 </li>
                             </>
                         )}

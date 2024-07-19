@@ -24,7 +24,9 @@ const Header: React.FC = () => {
 
     return (
         <header className={styles.header}>
-            <div className={styles.logo}>BEAR SCRIBES</div>
+            <div className={styles.logo} onClick={() => handleNavigation('/')}>
+                BEAR SCRIBES
+            </div>
             <div className={styles.actions}>
                 {hasToken ? (
                     isLibraryPage ? (
