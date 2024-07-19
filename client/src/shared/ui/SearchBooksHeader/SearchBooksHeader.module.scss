@@ -1,11 +1,11 @@
 .header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    height: 100px;
+    background-color: #ece7fb;
+    border-bottom: 1px solid #e9ecef;
 }
 
 .logo {
@@ -23,7 +23,7 @@
     padding: 0.5rem 1rem;
     font-size: 1rem;
     color: #fff;
-    background-color: #007bff;
+    background-color: #3366ff;
     border: none;
     border-radius: 5px;
     cursor: pointer;

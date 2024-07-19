@@ -16,15 +16,12 @@ export function BookInfoPage({ book }: { book: Book }) {
 
     useEffect(() => {
         async function fetchCover() {
-            const coverUrl =
-                'https://covers.openlibrary.org/b/id/' +
-                volumeInfo.coverId +
-                '-L.jpg';
+            const coverUrl = 'https://covers.openlibrary.org/b/id/' + '-L.jpg';
             setCover(coverUrl);
         }
 
         fetchCover();
-    }, [volumeInfo.coverId]);
+    }, []);
 
     return (
         <div className="book-info-container">
@@ -41,7 +38,7 @@ export function BookInfoPage({ book }: { book: Book }) {
                     <div className="book-info-title-and-rating">
                         <h2 className="book-info-title">{volumeInfo.title}</h2>
                         <div className="book-info-rating-star">
-                            <p>{volumeInfo.averageRating}</p>
+                            {/*<p>{volumeInfo.averageRating}</p>*/}
                             <FontAwesomeIcon
                                 icon={faStar}
                                 className="book-info-star"
@@ -50,7 +47,7 @@ export function BookInfoPage({ book }: { book: Book }) {
                     </div>
                     <p className="book-info-description">
                         {' '}
-                        {volumeInfo.description}
+                        {/*{volumeInfo.description}*/}
                     </p>
 
                     <div className="book-info-authors-pages-categories">
@@ -67,9 +64,9 @@ export function BookInfoPage({ book }: { book: Book }) {
                         <div className="book-info-categories">
                             {' '}
                             Categories:{' '}
-                            {volumeInfo.categories.map((category, index) => (
-                                <p key={index}>{category}</p>
-                            ))}
+                            {/*{volumeInfo.categories.map((category, index) => (*/}
+                            {/*    <p key={index}>{category}</p>*/}
+                            {/*))}*/}
                         </div>
                     </div>
                 </div>

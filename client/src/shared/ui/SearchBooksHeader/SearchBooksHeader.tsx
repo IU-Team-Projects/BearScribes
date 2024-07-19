@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { getCookies, getCookie } from 'cookies-next';
+import Cookies from 'js-cookie';
 import { usePathname, useRouter } from 'next/navigation';
-import styles from './Header.module.scss';
+import styles from './SearchBooksHeader.module.scss';
 
-const Header: React.FC = () => {
+const SearchBooksHeader: React.FC = () => {
     const [hasToken, setHasToken] = useState(false);
     const router = useRouter();
     const pathname = usePathname() as string;
@@ -11,7 +11,7 @@ const Header: React.FC = () => {
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            const token = getCookie('is_authorized');
+            const token = Cookies.get('is_authorized');
             setHasToken(!!token);
         }
     }, []);
@@ -24,16 +24,14 @@ const Header: React.FC = () => {
 
     return (
         <header className={styles.header}>
-            <div className={styles.logo} onClick={() => handleNavigation('/')}>
-                BEAR SCRIBES
-            </div>
+            <div className={styles.logo}>BEAR SCRIBES</div>
             <div className={styles.actions}>
                 {hasToken ? (
                     isLibraryPage ? (
                         <>
                             <button
                                 className={styles.button}
-                                onClick={() => handleNavigation('/searchBooks')}
+                                onClick={() => handleNavigation('/add')}
                             >
                                 Add new book
                             </button>
@@ -73,4 +71,4 @@ const Header: React.FC = () => {
     );
 };
 
-export default Header;
+export default SearchBooksHeader;

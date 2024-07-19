@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import styles from './Footer.module.scss';
+import styles from './SearchBooksFooter.module.scss';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 
-const Footer: React.FC = () => {
+const SearchBooksFooter: React.FC = () => {
     const [hasToken, setHasToken] = useState(false);
     const router = useRouter();
 
@@ -95,4 +95,4 @@ const Footer: React.FC = () => {
     );
 };
 
-export default Footer;
+export default SearchBooksFooter;
