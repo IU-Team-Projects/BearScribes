@@ -46,13 +46,18 @@ const Footer: React.FC = () => {
                                 Contact
                             </a>
                         </li>
-                        <li>FAQ</li>
+                        <li>
+                            <button
+                                className={styles.linkButton}
+                                onClick={() => handleNavigation('/about')}> FAQ
+                            </button>
+                        </li>
                     </ul>
                 </div>
                 <div>
                     <h3>SharePoint</h3>
                     <ul>
-                        {hasToken && (
+                    {hasToken && (
                             <>
                                 <li>
                                     <button
