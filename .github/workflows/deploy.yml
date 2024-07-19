@@ -17,10 +17,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+
       - name: Install dependencies
         run: npm install
+
       - name: Run lint script
         run: npm run lint
-      - name: Run prettier
-        run: |-
-          npx prettier --check src
+
+      - name: Run prettier to fix issues
+        run: npm run prettier-write
+
+      - name: Run prettier to check problems
+        run: npm run prettier-check
