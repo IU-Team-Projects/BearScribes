@@ -2,7 +2,7 @@
 import './SearchItem.css';
 import OpenLibraryBook from '@/models/openLibraryBook';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import UserBook from '@/models/userBook';
 
 const SearchItem = ({ book }: { book: OpenLibraryBook }) => {
@@ -36,7 +36,7 @@ const SearchItem = ({ book }: { book: OpenLibraryBook }) => {
             body: JSON.stringify(payload),
         };
 
-        fetch(backendURL, options)
+        fetch(backendURL + '/books', { ...options, credentials: 'include' })
             .then((response) => {
                 if (response.status === 404) {
                     console.error('Error: Resource not found (404)');

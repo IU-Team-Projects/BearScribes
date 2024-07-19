@@ -1,5 +1,3 @@
-'use client';
-
 import Input from '@/shared/ui/input';
 import PasswordSVG from '@/shared/ui/passwordSVG';
 import UserSVG from '@/shared/ui/userSVG';
@@ -7,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 import login from '../api/login';
-import Cookies from 'js-cookie';
+import { setCookie } from 'cookies-next';
 
 export function LoginPage() {
     const [username, setUsername] = useState('');
@@ -51,7 +49,7 @@ export function LoginPage() {
         if (token) {
             console.log('got token: ', token);
 
-            Cookies.set('access_token', `${token.access_token}`);
+            setCookie('is_authorized', true);
 
             router.push('/');
         }

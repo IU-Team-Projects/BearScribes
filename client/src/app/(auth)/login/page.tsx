@@ -1,3 +1,5 @@
+'use client';
+
 import { LoginPage } from '@/pages/login';
 
 const Page = () => <LoginPage />;

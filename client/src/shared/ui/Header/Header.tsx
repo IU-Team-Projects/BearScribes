@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Cookies from 'js-cookie';
+import { getCookies, getCookie } from 'cookies-next';
 import { usePathname, useRouter } from 'next/navigation';
 import styles from './Header.module.scss';
 
@@ -11,7 +11,7 @@ const Header: React.FC = () => {
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            const token = Cookies.get('access_token');
+            const token = getCookie('is_authorized');
             setHasToken(!!token);
         }
     }, []);
