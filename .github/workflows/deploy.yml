@@ -29,8 +29,5 @@ jobs:
       - name: Run lint script
         run: npm run lint
 
-      - name: Run prettier to fix issues
-        run: npm run prettier-write
-
       - name: Run prettier to check problems
         run: npm run prettier-check
