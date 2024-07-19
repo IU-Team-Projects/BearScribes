@@ -5,25 +5,63 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import UserBook from '@/models/userBook';
 
+
 const SearchItem = ({ book }: { book: OpenLibraryBook }) => {
     const coverURL = `https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`;
 
-    const [favorites, setFavorites] = useState<UserBook[]>([]);
+    const [books, setBooks] = useState<UserBook[]>([]);
+  
     const [message, setMessage] = useState('');
 
-    useEffect(() => {
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-    }, [favorites]);
+    const backendURL =  process.env.NEXT_PUBLIC_BACKEND_URL || '';
+    const backendBooksURL = backendURL + "/books"
+
+
+    const fetchBooks = async () => {
+        try {
+            const response = await fetch(backendURL + '/books/', {
+                credentials: 'include',
+                headers: {
+                    accept: 'application/json',
+                },
+            });
+            console.log(response)
+            if (!response.ok) {
+                console.error(
+                    'Failed to fetch books:',
+                    response.statusText,
+                );
+                return;
+            }
+            const data = await response.json();
+            console.log('Books data:', data); 
+
+            if (Array.isArray(data)) {
+                const transformedBooks = data.map((book: UserBook) => ({
+                    open_library_book: book.open_library_book,
+                    id: book.id,
+                    title: book.title,
+                    authors: book.authors,
+                    cover_url: book.cover_url
+                }));
+                setBooks(transformedBooks);
+            } else {
+                console.error('Books data is not an array:', data);
+            }
+        } catch (error) {
+            console.error('Error fetching books:', error);
+        }
+    };
 
     useEffect(() => {
-        const storedFavorites =
-            JSON.parse(localStorage.getItem('favorites') ?? '') || [];
-        setFavorites(storedFavorites);
-    }, []);
-
-    const addBook = () => {
-        const backendURL = process.env.NEXT_PUBLIC_BACKEND_URL || '';
-
+        fetchBooks()
+    })
+        
+    const checkIfBookExist = (openLibraryId: string): boolean => {
+        return books.some(fetchedBook => fetchedBook.open_library_book == openLibraryId)
+    }
+    
+    const addBook = async () => {
         const payload = {
             open_library_book: book.cover_edition_key,
         };
@@ -36,7 +74,14 @@ const SearchItem = ({ book }: { book: OpenLibraryBook }) => {
             body: JSON.stringify(payload),
         };
 
-        fetch(backendURL + '/books', { ...options, credentials: 'include' })
+        if (checkIfBookExist(book.cover_edition_key)) {
+            setMessage("Book is already added!!!")
+            return 
+        } else {
+            setMessage("Added book to library")
+        }
+
+        fetch(backendBooksURL, { ...options, credentials: 'include' })
             .then((response) => {
                 if (response.status === 404) {
                     console.error('Error: Resource not found (404)');
@@ -48,17 +93,6 @@ const SearchItem = ({ book }: { book: OpenLibraryBook }) => {
                     );
                 }
                 return response.json();
-            })
-            .then((data: UserBook) => {
-                console.log('Success:', data);
-
-                if (favorites.some((favBook) => favBook.id === data.id)) {
-                    setMessage('You already added this book to favorites.');
-                } else {
-                    const newFavorites = [...favorites, data];
-                    setFavorites(newFavorites);
-                    setMessage('Book added to favorites.');
-                }
             })
             .catch((error) => {
                 console.error(
@@ -82,7 +116,7 @@ const SearchItem = ({ book }: { book: OpenLibraryBook }) => {
                     <p>First sentence: {book.first_sentence}</p>
                 </div>
                 {message ? (
-                    <p style={{ fontSize: '20px', fontWeight: 'bold' }}>
+                    <p style={{ fontSize: '20px', fontWeight: 'bold' , color: "red"}}>
                         {message}
                     </p>
                 ) : (
