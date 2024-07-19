@@ -8,7 +8,7 @@ const UserInfo: React.FC<UserInfoModel> = ({
     phone_number,
     telegram_profile,
 }) => {
-    return (
+    return ( 
         <div className={styles.userInfo}>
             <h2>{name}</h2>
             <p>City: {city}</p>
