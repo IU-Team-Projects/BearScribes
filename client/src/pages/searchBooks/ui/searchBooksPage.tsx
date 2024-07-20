@@ -14,7 +14,8 @@ import { OrbitProgress } from 'react-loading-indicators';
 
 const defaultBooks: OpenLibraryBook[] = [];
 
-const defaultBookCover: string = 'https://static.vecteezy.com/system/resources/thumbnails/019/900/152/small_2x/old-book-watercolor-illustration-png.png';
+const defaultBookCover: string =
+    'https://static.vecteezy.com/system/resources/thumbnails/019/900/152/small_2x/old-book-watercolor-illustration-png.png';
 
 export function SearchBooksPage() {
     let [books, setBooks] = useState<OpenLibraryBook[]>(defaultBooks);
@@ -45,7 +46,7 @@ export function SearchBooksPage() {
             );
 
             setBooks(books);
-            setQuery("")
+            setQuery('');
         } catch (error) {
             console.error('Error fetching books:', error);
         } finally {
