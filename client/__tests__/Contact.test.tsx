@@ -16,9 +16,7 @@ describe('Page', () => {
     it('renders a contact', () => {
         render(<Contact />);
 
-
         const contact = screen.getByTestId('contact');
-
 
         expect(contact).toBeInTheDocument();
         expect(contact).toHaveClass('contact');
@@ -28,6 +26,5 @@ describe('Page', () => {
         expect(contact.querySelector('h2')).toBeInTheDocument();
         expect(contact.querySelector('button')).toBeInTheDocument();
         expect(contact.querySelector('img')).toBeInTheDocument();
-
-    })
-})
+    });
+});

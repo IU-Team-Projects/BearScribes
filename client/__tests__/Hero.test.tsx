@@ -1,5 +1,5 @@
-import '@testing-library/jest-dom'
-import { render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
 import Hero from '@/shared/ui/Hero/Hero';
 jest.mock('next/navigation', () => ({
     useRouter() {
@@ -14,11 +14,9 @@ jest.mock('next/navigation', () => ({
 }));
 describe('Page', () => {
     it('renders a hero', () => {
-        render(<Hero />)
-
+        render(<Hero />);
 
         const hero = screen.getByTestId('hero');
-
 
         expect(hero).toBeInTheDocument();
         expect(hero).toHaveClass('hero');
@@ -28,6 +26,5 @@ describe('Page', () => {
         expect(hero.querySelector('h1')).toBeInTheDocument();
         expect(hero.querySelector('button')).toBeInTheDocument();
         expect(hero.querySelector('img')).toBeInTheDocument();
-
-    })
-})
+    });
+});

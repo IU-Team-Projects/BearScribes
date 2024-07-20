@@ -1,5 +1,5 @@
-import '@testing-library/jest-dom'
-import { render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
 import BookGrid from '@/shared/ui/BookGrid/BookGrid';
 jest.mock('next/navigation', () => ({
     useRouter() {
@@ -14,17 +14,11 @@ jest.mock('next/navigation', () => ({
 }));
 describe('Page', () => {
     it('renders a book grid', () => {
-        render(<BookGrid books={[]}/>)
-
+        render(<BookGrid books={[]} />);
 
         const bookgrid = screen.getByTestId('bookgrid');
 
-
         expect(bookgrid).toBeInTheDocument();
         expect(bookgrid).toHaveClass('bookGrid');
-
-
-
-
-    })
-})
+    });
+});

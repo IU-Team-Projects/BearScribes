@@ -1,5 +1,5 @@
-import '@testing-library/jest-dom'
-import { render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
 import Header from '@/shared/ui/Header/Header';
 jest.mock('next/navigation', () => ({
     useRouter() {
@@ -14,7 +14,7 @@ jest.mock('next/navigation', () => ({
 }));
 describe('Page', () => {
     it('renders a heading', () => {
-        render(<Header />)
+        render(<Header />);
 
         const heading = screen.getByTestId('header');
 
@@ -23,7 +23,5 @@ describe('Page', () => {
 
         expect(heading.querySelector('div')).toBeInTheDocument();
         expect(heading.querySelector('button')).toBeInTheDocument();
-
-
-    })
-})
+    });
+});

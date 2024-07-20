@@ -1,5 +1,5 @@
-import '@testing-library/jest-dom'
-import { render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
 import Testimonial from '@/shared/ui/Testimonial/Testimonial';
 jest.mock('next/navigation', () => ({
     useRouter() {
@@ -14,7 +14,7 @@ jest.mock('next/navigation', () => ({
 }));
 describe('Page', () => {
     it('renders a testimonial', () => {
-        render(<Testimonial />)
+        render(<Testimonial />);
 
         const testimonial = screen.getByTestId('testimonial');
 
@@ -25,7 +25,5 @@ describe('Page', () => {
         expect(testimonial.querySelector('img')).toBeInTheDocument();
         expect(testimonial.querySelector('p')).toBeInTheDocument();
         expect(testimonial.querySelector('span')).toBeInTheDocument();
-
-
-    })
-})
+    });
+});

@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import {AboutPage} from '@/pages/about/ui/aboutPage';
+import { AboutPage } from '@/pages/about/ui/aboutPage';
 
 jest.mock('next/navigation', () => ({
     useRouter() {
@@ -15,7 +15,6 @@ jest.mock('next/navigation', () => ({
 }));
 describe('Page', () => {
     it('renders an about', () => {
-
         render(<AboutPage />);
 
         const about = screen.getByTestId('about');
@@ -25,7 +24,5 @@ describe('Page', () => {
         expect(about.querySelector('div')).toBeInTheDocument();
         expect(about.querySelector('button')).toBeInTheDocument();
         expect(about.querySelector('img')).toBeInTheDocument();
-
-
-    })
-})
+    });
+});
