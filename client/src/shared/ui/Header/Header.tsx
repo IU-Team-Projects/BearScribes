@@ -23,7 +23,7 @@ const Header: React.FC = () => {
     };
 
     return (
-        <header className={styles.header}>
+        <header data-testid="header" className={styles.header}>
             <div className={styles.logo} onClick={() => handleNavigation('/')}>
                 BEAR SCRIBES
             </div>

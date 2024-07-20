@@ -57,6 +57,7 @@ export function LoginPage() {
 
     return (
         <form
+            data-testid="login"
             onSubmit={(e) => {
                 e.preventDefault();
                 submitHandler(e);

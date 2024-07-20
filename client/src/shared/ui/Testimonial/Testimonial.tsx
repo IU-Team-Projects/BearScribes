@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const Testimonial: React.FC = () => {
     return (
-        <section className={styles.testimonial}>
+        <section data-testid="testimonial" className={styles.testimonial}>
             <div className={styles.profile}>
                 <Image
                     src="/profile.jpg"
