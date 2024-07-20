@@ -17,7 +17,7 @@ const SearchItem = ({ book }: { book: OpenLibraryBook }) => {
 
     const fetchBooks = async () => {
         try {
-            const response = await fetch(backendBooksURL, {
+            const response = await fetch(backendURL + '/books/', {
                 credentials: 'include',
                 headers: {
                     accept: 'application/json',
