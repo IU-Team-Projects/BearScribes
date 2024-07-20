@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useParams } from 'next/navigation';
 import { BookData } from '@/models/bookinfo';
 
-export function BookInfoPage() {
+const BookInfoPage: React.FC = () =>  {
     const [data, setData] = useState<BookData | null>(null);
     const coverImageRef = useRef<HTMLImageElement>(null);
     const [loading, setLoading] = useState(true);
