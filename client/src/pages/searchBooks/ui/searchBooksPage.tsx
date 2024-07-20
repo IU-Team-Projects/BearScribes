@@ -104,24 +104,25 @@ export function SearchBooksPage() {
                 </div>
             ) : (
                 <div className="book-item">
-                    {books.length > 0 ? (
-                        books.map((book, index) => (
-                            <SearchItem key={index} book={book} />
-                        ))
-                    ) : (
-                        !hasSearched && (
-                            <div className="placeholder">
-                                <Image
-                                    src="/first_opened.png"
-                                    alt="Search for books"
-                                    className="placeholder-image"
-                                    width={150}
-                                    height={150}
-                                />
-                                <p>Type the name of a book in the search bar to get started!</p>
-                            </div>
-                        )
-                    )}
+                    {books.length > 0
+                        ? books.map((book, index) => (
+                              <SearchItem key={index} book={book} />
+                          ))
+                        : !hasSearched && (
+                              <div className="placeholder">
+                                  <Image
+                                      src="/first_opened.png"
+                                      alt="Search for books"
+                                      className="placeholder-image"
+                                      width={150}
+                                      height={150}
+                                  />
+                                  <p>
+                                      Type the name of a book in the search bar
+                                      to get started!
+                                  </p>
+                              </div>
+                          )}
                 </div>
             )}
             <SearchBooksFooter />
