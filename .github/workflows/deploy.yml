@@ -4,6 +4,11 @@ on:
     branches:
       - main
       - frontend
+  pull_request:
+    branches:
+      - main
+      - frontend
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -17,10 +22,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+
       - name: Install dependencies
         run: npm install
+
       - name: Run lint script
         run: npm run lint
-      - name: Run prettier
-        run: |-
-          npx prettier --check src
+
+      - name: Run prettier to check problems
+        run: npm run prettier-check
