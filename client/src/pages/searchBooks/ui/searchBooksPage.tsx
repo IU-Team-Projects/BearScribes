@@ -11,6 +11,7 @@ import OpenLibraryBook from '@/models/openLibraryBook';
 import OpenLibraryResults from '@/models/openLibraryResults';
 import { useEffect, useState } from 'react';
 import { OrbitProgress } from 'react-loading-indicators';
+import Image from 'next/image';
 
 const defaultBooks: OpenLibraryBook[] = [];
 
@@ -21,6 +22,7 @@ export function SearchBooksPage() {
     let [books, setBooks] = useState<OpenLibraryBook[]>(defaultBooks);
     let [query, setQuery] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
+    const [hasSearched, setHasSearched] = useState<boolean>(false);
 
     const handleSearch = async () => {
         setLoading(true);
@@ -47,6 +49,7 @@ export function SearchBooksPage() {
 
             setBooks(books);
             setQuery('');
+            setHasSearched(true);
         } catch (error) {
             console.error('Error fetching books:', error);
         } finally {
@@ -101,12 +104,27 @@ export function SearchBooksPage() {
                 </div>
             ) : (
                 <div className="book-item">
-                    {books.map((book, index) => (
-                        <SearchItem key={index} book={book} />
-                    ))}
+                    {books.length > 0
+                        ? books.map((book, index) => (
+                              <SearchItem key={index} book={book} />
+                          ))
+                        : !hasSearched && (
+                              <div className="placeholder">
+                                  <Image
+                                      src="/first_opened.png"
+                                      alt="Search for books"
+                                      className="placeholder-image"
+                                      width={150}
+                                      height={150}
+                                  />
+                                  <p>
+                                      Type the name of a book in the search bar
+                                      to get started!
+                                  </p>
+                              </div>
+                          )}
                 </div>
             )}
-
             <SearchBooksFooter />
         </div>
     );

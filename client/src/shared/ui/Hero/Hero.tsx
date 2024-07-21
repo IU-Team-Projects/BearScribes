@@ -22,7 +22,7 @@ const Hero: React.FC = () => {
     };
 
     return (
-        <section className={styles.hero}>
+        <section data-testid="hero" className={styles.hero}>
             <div className={styles.text}>
                 <h1>Book Sharing</h1>
                 <p>Easier than ever</p>
