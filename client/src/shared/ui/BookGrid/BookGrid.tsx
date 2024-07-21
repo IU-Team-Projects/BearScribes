@@ -15,7 +15,7 @@ const BookGrid: React.FC<BookGridProps> = ({ books }) => {
     };
 
     return (
-        <div className={styles.bookGrid}>
+        <div data-testid="bookgrid" className={styles.bookGrid}>
             {books.length === 0 ? (
                 <div className={styles.noBooks}>
                     <p>No books found in your library. Start adding some!</p>

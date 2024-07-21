@@ -11,27 +11,9 @@ import OpenLibraryBook from '@/models/openLibraryBook';
 import OpenLibraryResults from '@/models/openLibraryResults';
 import { useEffect, useState } from 'react';
 import { OrbitProgress } from 'react-loading-indicators';
+import Image from 'next/image';
 
-const defaultBooks: OpenLibraryBook[] = [
-    {
-        author_name: ['Author One'],
-        cover_edition_key: 'a;sldkfj;als',
-        cover_i: 123456,
-        first_publish_year: 2000,
-        first_sentence: ['First sentence of the book.'],
-        title: 'Book One',
-        cover_url: 'http://example.com/cover1.jpg',
-    },
-    {
-        author_name: ['Author Two'],
-        cover_edition_key: 'a;sldkfj;als',
-        cover_i: 789101,
-        first_publish_year: 2010,
-        first_sentence: ['Another first sentence.'],
-        title: 'Book Two',
-        cover_url: 'http://example.com/cover2.jpg',
-    },
-];
+const defaultBooks: OpenLibraryBook[] = [];
 
 const defaultBookCover: string =
     'https://static.vecteezy.com/system/resources/thumbnails/019/900/152/small_2x/old-book-watercolor-illustration-png.png';
@@ -40,21 +22,7 @@ export function SearchBooksPage() {
     let [books, setBooks] = useState<OpenLibraryBook[]>(defaultBooks);
     let [query, setQuery] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
-
-    useEffect(() => {
-        const savedBooks = localStorage.getItem('books');
-        if (savedBooks) {
-            setBooks(JSON.parse(savedBooks));
-        } else {
-            setBooks(defaultBooks);
-        }
-    }, []);
-
-    useEffect(() => {
-        if (books.length > 0) {
-            localStorage.setItem('books', JSON.stringify(books));
-        }
-    }, [books]);
+    const [hasSearched, setHasSearched] = useState<boolean>(false);
 
     const handleSearch = async () => {
         setLoading(true);
@@ -80,6 +48,8 @@ export function SearchBooksPage() {
             );
 
             setBooks(books);
+            setQuery('');
+            setHasSearched(true);
         } catch (error) {
             console.error('Error fetching books:', error);
         } finally {
@@ -92,6 +62,15 @@ export function SearchBooksPage() {
             handleSearch();
         }
     };
+
+    useEffect(() => {
+        const hasSearched = localStorage.getItem('hasSearched');
+        if (!hasSearched) {
+            setQuery('Harry Potter');
+            handleSearch();
+            localStorage.setItem('hasSearched', 'true');
+        }
+    }, []);
 
     return (
         <div className="items-container">
@@ -125,12 +104,27 @@ export function SearchBooksPage() {
                 </div>
             ) : (
                 <div className="book-item">
-                    {books.map((book, index) => (
-                        <SearchItem key={index} book={book} />
-                    ))}
+                    {books.length > 0
+                        ? books.map((book, index) => (
+                              <SearchItem key={index} book={book} />
+                          ))
+                        : !hasSearched && (
+                              <div className="placeholder">
+                                  <Image
+                                      src="/first_opened.png"
+                                      alt="Search for books"
+                                      className="placeholder-image"
+                                      width={150}
+                                      height={150}
+                                  />
+                                  <p>
+                                      Type the name of a book in the search bar
+                                      to get started!
+                                  </p>
+                              </div>
+                          )}
                 </div>
             )}
-
             <SearchBooksFooter />
         </div>
     );

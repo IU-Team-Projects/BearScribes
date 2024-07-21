@@ -8,7 +8,7 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <section className={styles.contact}>
+        <section data-testid="contact" className={styles.contact}>
             <div className={styles.text}>
                 <h2>Wanna talk?</h2>
                 <p>You can ask us questions about the service and books</p>
