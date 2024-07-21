@@ -5,6 +5,7 @@ import handleImageLoad from './handleImageLoad';
 import axios from 'axios';
 import { useParams } from 'next/navigation';
 import { BookData } from '@/models/bookinfo';
+import Image from 'next/image';
 
 const BookInfoPage: React.FC = () =>  {
     const [data, setData] = useState<BookData | null>(null);
@@ -109,11 +110,13 @@ const BookInfoPage: React.FC = () =>  {
         <div className={styles.page_container}>
             <div className={styles.main_block}>
                 <div className={styles.picture_block}>
-                    <img
+                    <Image
                         ref={coverImageRef}
                         className="cover"
                         src={data.book.cover_url}
                         alt="Book Cover"
+                        width={350} 
+                        height={400}
                     />
                 </div>
                 <div className={styles.divider}></div>
