@@ -1,0 +1,28 @@
+.items-container {
+    background-color: white;
+}
+
+.book-item {
+    margin: 100px 200px;
+}
+
+.placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    text-align: center;
+    color: #6c757d;
+}
+
+.placeholder-image {
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.placeholder p {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
