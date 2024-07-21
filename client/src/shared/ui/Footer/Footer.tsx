@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useState } from 'react';
 import styles from './Footer.module.scss';
 import { useRouter } from 'next/navigation';
@@ -21,7 +22,7 @@ const Footer: React.FC = () => {
     };
 
     return (
-        <footer className={styles.footer}>
+        <footer data-testid="footer" className={styles.footer}>
             <div className={styles.content}>
                 <div>
                     <h3>BEAR SCRIBES</h3>

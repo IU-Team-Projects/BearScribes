@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 export function AboutPage() {
     const router = useRouter();
     return (
-        <div>
+        <div data-testid="about">
             <div className={styles.about}>ABOUT US</div>
             <div className={styles.text_description}>
                 {' '}

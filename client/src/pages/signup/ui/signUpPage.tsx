@@ -79,6 +79,7 @@ export function SignUpPage() {
 
     return (
         <form
+            data-testid="signup"
             className="flex h-full flex-col items-center justify-center space-y-0"
             onSubmit={async (e) => {
                 e.preventDefault();
