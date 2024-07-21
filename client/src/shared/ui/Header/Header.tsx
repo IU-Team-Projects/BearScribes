@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { getCookies, getCookie } from 'cookies-next';
 import { usePathname, useRouter } from 'next/navigation';
