@@ -5,7 +5,7 @@ export interface Book {
     authors: string;
     cover_url: string;
 }
-  
+
 export interface Owner {
     name: string;
     city: string;
@@ -13,7 +13,7 @@ export interface Owner {
     telegram_profile: string;
     id: number;
 }
-  
+
 export interface BookData {
     book: Book;
     owner: Owner;
@@ -23,4 +23,3 @@ export interface BookData {
     description?: string;
     is_owner: boolean;
 }
-  

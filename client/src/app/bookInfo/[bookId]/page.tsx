@@ -7,7 +7,7 @@ import { useParams } from 'next/navigation';
 import { BookData } from '@/models/bookinfo';
 import Image from 'next/image';
 
-const BookInfoPage: React.FC = () =>  {
+const BookInfoPage: React.FC = () => {
     const [data, setData] = useState<BookData | null>(null);
     const coverImageRef = useRef<HTMLImageElement>(null);
     const [loading, setLoading] = useState(true);
@@ -115,7 +115,7 @@ const BookInfoPage: React.FC = () =>  {
                         className="cover"
                         src={data.book.cover_url}
                         alt="Book Cover"
-                        width={350} 
+                        width={350}
                         height={400}
                     />
                 </div>
@@ -182,6 +182,6 @@ const BookInfoPage: React.FC = () =>  {
             </div>
         </div>
     );
-}
+};
 
 export default BookInfoPage;
