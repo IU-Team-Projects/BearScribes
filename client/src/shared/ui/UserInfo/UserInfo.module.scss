@@ -20,4 +20,58 @@
     color: #6c757d;
     margin: 0.25rem 0;
   }
+
+  .editable {
+    cursor: pointer;
+    color: #007bff;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #0056b3;
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+    }
+  }
+
+  .message {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #28a745;
+  }
 }
