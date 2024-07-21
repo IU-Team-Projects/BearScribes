@@ -63,7 +63,7 @@ const BookInfoPage: React.FC = () =>  {
         if (bookId) {
             fetchData();
         }
-    }, [bookId]);
+    }, [bookId, backendURL]);
 
     useEffect(() => {
         const coverImage = coverImageRef.current;
