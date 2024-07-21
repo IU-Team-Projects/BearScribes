@@ -13,7 +13,8 @@ const BookInfoPage: React.FC = () =>  {
     const [bookDeleted, setBookDeleted] = useState(false);
     const infoBlockRef = useRef<HTMLDivElement>(null);
     const [showFullDescription, setShowFullDescription] = useState(false);
-    const { bookId } = useParams();
+    const params = useParams();
+    const bookId = params?.bookId as string;
     const backendURL = process.env.NEXT_PUBLIC_BACKEND_URL || '';
 
     useEffect(() => {
