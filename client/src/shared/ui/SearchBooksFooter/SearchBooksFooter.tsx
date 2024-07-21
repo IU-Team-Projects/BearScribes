@@ -65,7 +65,7 @@ const SearchBooksFooter: React.FC = () => {
                                     <a
                                         className={styles.link}
                                         onClick={() =>
-                                            handleNavigation('/books')
+                                            handleNavigation('/searchBooks')
                                         }
                                     >
                                         Books
