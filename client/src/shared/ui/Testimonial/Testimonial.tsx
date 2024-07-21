@@ -12,7 +12,11 @@ const Testimonial: React.FC = () => {
                     width={500}
                     height={500}
                 />
-                <p>Очень умные слова про книги</p>
+                <p>
+                    Books are like workouts for the brain. The more you read,
+                    the stronger you become. And if a book is boring, you can
+                    always use it as a dumbbell
+                </p>
                 <span>Eldar</span>
             </div>
         </section>
